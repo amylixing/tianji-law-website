@@ -125,7 +125,44 @@
             <div class="contact-buttons">
                 <a href="mailto:154105866@qq.com" class="cta-button">发送邮件</a>
                 <a href="tel:13699817102" class="cta-button">拨打电话</a>
-                <a href="https://www.coze.cn/store/agent/7473025231209185330?from=store_search_suggestion" class="cta-button" target="_blank">在线法律咨询</a>
+<div class="floating-consultation">
+    <a href="https://www.coze.cn/store/agent/7473025231209185330?from=store_search_suggestion" class="float-button" target="_blank">
+        <span class="consultation-text">在线咨询</span>
+    </a>
+</div>
+
+<style>
+.floating-consultation {
+    position: fixed;
+    bottom: 40px;
+    right: 40px;
+    z-index: 1000;
+}
+
+.float-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    transition: all 0.3s ease;
+}
+
+.float-button:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
+
+.consultation-text {
+    font-size: 14px;
+    text-align: center;
+}
+</style>
             </div>
         </section>
     </div>
