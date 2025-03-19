@@ -88,10 +88,11 @@ body {
 .main-header {
     background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
     color: white;
-    padding: 6rem 0 4rem;
+    padding: 4rem 0 3rem;
     text-align: center;
     position: relative;
     overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
 .background-pattern {
@@ -107,13 +108,17 @@ body {
 }
 
 .main-title {
-    font-size: 2.5rem;
+    font-size: 3rem;
     margin-bottom: 1rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    letter-spacing: 2px;
 }
 
 .slogan {
-    font-size: 1.2rem;
-    opacity: 0.9;
+    font-size: 1.4rem;
+    opacity: 0.95;
+    font-weight: 300;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
 }
 
 /* 容器样式 */
