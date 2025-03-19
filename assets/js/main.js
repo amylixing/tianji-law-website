@@ -37,6 +37,14 @@ const observer = new IntersectionObserver((entries) => {
 
 document.querySelectorAll('.animate-fade-in').forEach(el => observer.observe(el));
 
+// 新闻链接点击事件处理
+document.querySelectorAll('.news-link').forEach(link => {
+    link.addEventListener('click', (e) => {
+        e.preventDefault();
+        alert('新闻详情页面正在建设中，敬请期待！');
+    });
+});
+
 // 滚动到顶部按钮
 const scrollTopButton = document.querySelector('.scroll-top');
 
@@ -54,3 +62,42 @@ scrollTopButton.addEventListener('click', () => {
         behavior: 'smooth'
     });
 });
+
+// 在线咨询窗口控制
+const chatToggle = document.querySelector('.chat-toggle');
+const chatContainer = document.querySelector('.chat-container');
+const closeChat = document.querySelector('.close-chat');
+const sendMessage = document.querySelector('.send-message');
+const chatInput = document.querySelector('.chat-input textarea');
+const chatMessages = document.querySelector('.chat-messages');
+
+chatToggle.addEventListener('click', () => {
+    chatContainer.style.display = chatContainer.style.display === 'none' ? 'block' : 'none';
+});
+
+closeChat.addEventListener('click', () => {
+    chatContainer.style.display = 'none';
+});
+
+sendMessage.addEventListener('click', () => {
+    const message = chatInput.value.trim();
+    if (message) {
+        const messageElement = document.createElement('div');
+        messageElement.className = 'message user';
+        messageElement.textContent = message;
+        chatMessages.appendChild(messageElement);
+        chatInput.value = '';
+        
+        // 添加系统回复
+        setTimeout(() => {
+            const systemMessage = document.createElement('div');
+            systemMessage.className = 'message system';
+            systemMessage.textContent = '感谢您的咨询！我们的工作人员会尽快与您联系。如需紧急咨询，请拨打电话：13699817102';
+            chatMessages.appendChild(systemMessage);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }, 1000);
+    }
+});
+
+// 初始化聊天窗口状态
+chatContainer.style.display = 'none';
