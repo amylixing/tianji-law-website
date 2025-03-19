@@ -72,7 +72,7 @@ const chatInput = document.querySelector('.chat-input textarea');
 const chatMessages = document.querySelector('.chat-messages');
 
 chatToggle.addEventListener('click', () => {
-    chatContainer.style.display = chatContainer.style.display === 'none' ? 'block' : 'none';
+    window.location.href = 'https://www.coze.cn/store/agent/7478597360462463016?bot_id=true';
 });
 
 closeChat.addEventListener('click', () => {
