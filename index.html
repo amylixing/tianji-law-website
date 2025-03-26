@@ -128,25 +128,18 @@
                 
                 <div class="api-key-config">
                     <h4>API密钥配置</h4>
-                    <p>为确保您能够使用DeepSeek大模型服务，请配置您的API密钥</p>
-                    
-                    <div class="api-key-input">
-                        <label for="api-key">DeepSeek API密钥:</label>
-                        <input type="password" id="api-key" placeholder="请输入您的DeepSeek API密钥" value="sk-9c9040152a2c48508daeecc2fee8471f" />
-                        <button type="button" class="save-key-btn">保存密钥</button>
-                    </div>
+                    <p>我们已为您配置好DeepSeek大模型API密钥，您可以直接使用所有功能</p>
                     
                     <div class="api-key-status">
-                        <p class="key-status success">✓ 已配置默认API密钥，您可以直接使用所有功能</p>
+                        <p class="key-status success">✓ API密钥已配置完成，无需任何设置</p>
                     </div>
                     
                     <div class="api-key-notes">
-                        <p><i>注意：</i></p>
+                        <p><i>说明：</i></p>
                         <ul>
-                            <li>我们已为您配置好默认API密钥，无需单独申请</li>
-                            <li>如需使用自己的密钥，可<a href="https://www.deepseek.com/" target="_blank">点此申请</a>并替换</li>
-                            <li>您的API密钥仅存储在本地浏览器中，我们不会收集或存储您的密钥信息</li>
-                            <li>生成合同时将使用您配置的密钥调用DeepSeek API</li>
+                            <li>所有合同生成功能均使用官方提供的API密钥</li>
+                            <li>我们使用密钥：sk-9c9040152a2c48508daeecc2fee8471f</li>
+                            <li>无需您进行任何配置，直接体验全部功能</li>
                         </ul>
                     </div>
                 </div>
@@ -389,51 +382,21 @@
 .api-key-config {
     margin-top: 25px;
     padding: 20px;
-    background-color: #f8f9fa;
+    background-color: #f0f7ff;
     border-radius: 8px;
-    border: 1px dashed #ccc;
+    border: 1px solid #bbdefb;
 }
 
 .api-key-config h4 {
-    color: #333;
+    color: #1e88e5;
     margin-bottom: 10px;
     font-size: 1.1rem;
 }
 
-.api-key-input {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 10px;
-    margin: 15px 0;
-}
-
-.api-key-input label {
-    font-weight: 500;
-    min-width: 150px;
-}
-
-.api-key-input input {
-    flex: 1;
-    min-width: 250px;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    font-size: 0.9rem;
-}
-
-.save-key-btn {
-    background-color: #1e88e5;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    padding: 10px 15px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-.save-key-btn:hover {
-    background-color: #1565c0;
+.api-key-config p {
+    color: #333;
+    font-size: 1rem;
+    margin-bottom: 15px;
 }
 
 .api-key-status {
@@ -442,10 +405,11 @@
 }
 
 .key-status {
-    padding: 8px 15px;
+    padding: 8px 20px;
     border-radius: 20px;
     display: inline-block;
-    font-size: 0.9rem;
+    font-size: 0.95rem;
+    font-weight: 500;
 }
 
 .key-status.success {
@@ -459,9 +423,12 @@
 }
 
 .api-key-notes {
-    margin-top: 15px;
-    font-size: 0.85rem;
-    color: #666;
+    margin-top: 20px;
+    font-size: 0.9rem;
+    color: #555;
+    background-color: white;
+    padding: 15px;
+    border-radius: 6px;
 }
 
 .api-key-notes ul {
@@ -693,85 +660,15 @@
             const chatInput = document.querySelector('.chat-input textarea');
             const sendBtn = document.querySelector('.send-btn');
             const exampleTags = document.querySelectorAll('.example-tag');
-            const apiKeyInput = document.getElementById('api-key');
-            const saveKeyBtn = document.querySelector('.save-key-btn');
             
-            // API密钥存储和验证
-            let apiKey = localStorage.getItem('deepseek_api_key') || 'sk-9c9040152a2c48508daeecc2fee8471f';
-            
-            // 如果有存储的API密钥，显示为已填写状态
-            if (apiKey) {
-                apiKeyInput.value = apiKey === 'sk-9c9040152a2c48508daeecc2fee8471f' ? 
-                    'sk-9c9040152a2c48508daeecc2fee8471f' : '••••••••••••••••';
-                apiKeyInput.setAttribute('data-has-key', 'true');
-                
-                // 更新状态提示
-                document.querySelector('.key-status').textContent = 
-                    '✓ ' + (apiKey === 'sk-9c9040152a2c48508daeecc2fee8471f' ? 
-                    '使用默认API密钥' : '已保存您的自定义API密钥');
-            }
-            
-            // 保存API密钥
-            saveKeyBtn.addEventListener('click', function() {
-                const newKey = apiKeyInput.value.trim();
-                if (newKey) {
-                    // 保存到本地存储
-                    localStorage.setItem('deepseek_api_key', newKey);
-                    apiKey = newKey;
-                    
-                    // 显示成功提示
-                    alert('API密钥已保存成功！');
-                    
-                    // 更新状态提示
-                    if (newKey === 'sk-9c9040152a2c48508daeecc2fee8471f') {
-                        document.querySelector('.key-status').textContent = '✓ 使用默认API密钥';
-                        apiKeyInput.value = newKey;
-                    } else {
-                        // 修改输入框显示
-                        apiKeyInput.value = '••••••••••••••••';
-                        document.querySelector('.key-status').textContent = '✓ 已保存您的自定义API密钥';
-                    }
-                    apiKeyInput.setAttribute('data-has-key', 'true');
-                } else {
-                    alert('请输入有效的API密钥');
-                }
-            });
-            
-            // 当API密钥输入框获得焦点时，清空显示的点
-            apiKeyInput.addEventListener('focus', function() {
-                if (this.getAttribute('data-has-key') === 'true' && 
-                    this.value !== 'sk-9c9040152a2c48508daeecc2fee8471f') {
-                    this.value = '';
-                }
-            });
-            
-            // 当API密钥输入框失去焦点且未输入新值时，恢复显示点
-            apiKeyInput.addEventListener('blur', function() {
-                if (this.getAttribute('data-has-key') === 'true' && !this.value.trim()) {
-                    const currentKey = localStorage.getItem('deepseek_api_key') || 'sk-9c9040152a2c48508daeecc2fee8471f';
-                    this.value = currentKey === 'sk-9c9040152a2c48508daeecc2fee8471f' ? 
-                        currentKey : '••••••••••••••••';
-                }
-            });
-            
-            // 检查API密钥是否配置
-            function checkApiKey() {
-                // 默认值或已保存的密钥都有效
-                return true;
-            }
+            // 固定使用提供的API密钥
+            const apiKey = 'sk-9c9040152a2c48508daeecc2fee8471f';
             
             // 添加所有生成合同按钮的点击事件
             const generateButtons = document.querySelectorAll('.generate-btn');
             generateButtons.forEach(button => {
                 button.addEventListener('click', function(e) {
                     e.preventDefault();
-                    
-                    // 检查API密钥
-                    if (!checkApiKey()) {
-                        // 滚动到API密钥配置区域
-                        document.querySelector('.api-key-config').scrollIntoView({ behavior: 'smooth' });
-                        return;
-                    }
                     
                     // 获取合同类型
                     const contractType = this.getAttribute('data-contract-type');
@@ -783,6 +680,7 @@
                     this.style.pointerEvents = 'none';
                     
                     // 模拟调用DeepSeek API生成合同
+                    // 在实际应用中，这里会使用apiKey调用DeepSeek API
                     setTimeout(() => {
                         // 恢复按钮状态
                         this.textContent = originalText;
@@ -801,13 +699,6 @@
             function sendMessage() {
                 const message = chatInput.value.trim();
                 if (message) {
-                    // 检查API密钥
-                    if (!checkApiKey()) {
-                        // 滚动到API密钥配置区域
-                        document.querySelector('.api-key-config').scrollIntoView({ behavior: 'smooth' });
-                        return;
-                    }
-                    
                     // 添加用户消息
                     addMessage(message, 'user');
                     
@@ -858,6 +749,7 @@
                 let contractType = '';
                 
                 // 模拟AI思考时间
+                // 在实际应用中，这里会使用apiKey调用DeepSeek API
                 setTimeout(() => {
                     // 移除思考中的消息
                     chatBox.removeChild(thinkingDiv);
@@ -927,13 +819,6 @@
                             button.addEventListener('click', function(e) {
                                 e.preventDefault();
                                 
-                                // 检查API密钥
-                                if (!checkApiKey()) {
-                                    // 滚动到API密钥配置区域
-                                    document.querySelector('.api-key-config').scrollIntoView({ behavior: 'smooth' });
-                                    return;
-                                }
-                                
                                 // 显示生成中状态
                                 const originalText = this.textContent;
                                 this.textContent = '正在生成...';
@@ -941,6 +826,7 @@
                                 this.style.pointerEvents = 'none';
                                 
                                 // 模拟调用DeepSeek API生成合同
+                                // 在实际应用中，这里会使用apiKey调用DeepSeek API
                                 setTimeout(() => {
                                     // 恢复按钮状态
                                     this.textContent = originalText;
