@@ -27,46 +27,48 @@
             <a href="#service-process" class="nav-item">服务流程</a>
             <a href="#advantages-section" class="nav-item">核心优势</a>
             <a href="#services-section" class="nav-item">服务内容</a>
-            <a href="#contract-generator" class="nav-item">合同生成</a>
+            <a href="#contract-generator" class="nav-item">智能合同</a>
         </nav>
     </div>
 
     <style>
     /* 全局变量 */
     :root {
-        --primary-color: #007bff;
-        --primary-dark: #0056b3;
-        --secondary-color: #1e88e5;
-        --secondary-dark: #1565c0;
-        --success-color: #4caf50;
-        --success-dark: #388e3c;
-        --light-bg: #f8f9fa;
-        --border-color: #e0e0e0;
-        --text-primary: #333;
-        --text-secondary: #666;
-        --text-light: #757575;
-        --shadow-sm: 0 2px 5px rgba(0,0,0,0.1);
-        --shadow-md: 0 4px 10px rgba(0,0,0,0.1);
-        --shadow-lg: 0 5px 15px rgba(0,0,0,0.2);
-        --radius-sm: 4px;
-        --radius-md: 8px;
-        --radius-lg: 12px;
-        --transition: all 0.3s ease;
-        --spacing-xs: 5px;
-        --spacing-sm: 10px;
-        --spacing-md: 15px;
-        --spacing-lg: 20px;
-        --spacing-xl: 30px;
+        --primary-color: #2c5dd7;
+        --primary-dark: #1a4bbf;
+        --secondary-color: #3b82f6;
+        --secondary-dark: #1d4ed8;
+        --success-color: #22c55e;
+        --success-dark: #16a34a;
+        --light-bg: #f9fafb;
+        --border-color: #e5e7eb;
+        --text-primary: #1e293b;
+        --text-secondary: #475569;
+        --text-light: #64748b;
+        --shadow-sm: 0 2px 5px rgba(0,0,0,0.06);
+        --shadow-md: 0 4px 10px rgba(0,0,0,0.08);
+        --shadow-lg: 0 10px 15px rgba(0,0,0,0.1);
+        --radius-sm: 6px;
+        --radius-md: 10px;
+        --radius-lg: 16px;
+        --transition: all 0.25s ease;
+        --spacing-xs: 6px;
+        --spacing-sm: 12px;
+        --spacing-md: 18px;
+        --spacing-lg: 24px;
+        --spacing-xl: 36px;
+        --font-sans: 'Microsoft YaHei', 'PingFang SC', 'Hiragino Sans GB', 'Helvetica Neue', Arial, sans-serif;
     }
 
     /* 全局基础样式 */
     body {
-        font-family: 'Microsoft YaHei', 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        font-family: var(--font-sans);
         line-height: 1.6;
         color: var(--text-primary);
         background-color: #fff;
         margin: 0;
         padding: 0;
+        font-size: 16px;
     }
 
     .container {
@@ -107,53 +109,66 @@
 
     /* 头部样式 */
     .main-header {
-        background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+        background: linear-gradient(135deg, #2563eb, #3b82f6);
         color: white;
         padding: var(--spacing-xl) 0;
         text-align: center;
+        margin-bottom: 60px; /* 增加底部间距 */
     }
 
     .header-content {
         text-align: center;
-        padding: var(--spacing-xl) 0;
+        padding: calc(var(--spacing-xl) * 1.5) 0; /* 增加内部间距 */
     }
     
     .main-title {
-        margin-bottom: var(--spacing-sm);
-        font-size: 2.5rem;
+        margin-bottom: var(--spacing-md);
+        font-size: 3rem; /* 增大标题字体 */
         text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+        font-weight: 700;
     }
 
     .slogan {
-        font-size: 1.2rem;
-        opacity: 0.9;
+        font-size: 1.4rem; /* 增大副标题字体 */
+        opacity: 0.95;
+        margin-top: var(--spacing-md);
     }
 
     /* 导航栏样式 */
     .nav-container {
-        background-color: white;
-        box-shadow: var(--shadow-sm);
+        background-color: rgba(255, 255, 255, 0.95); /* 半透明背景 */
+        box-shadow: var(--shadow-md);
         position: sticky;
         top: 0;
         z-index: 1000;
+        margin-top: -55px; /* 调整上移距离 */
+        border-radius: var(--radius-lg);
+        max-width: 800px;
+        margin-left: auto;
+        margin-right: auto;
+        backdrop-filter: blur(5px); /* 添加模糊效果 */
+        padding: var(--spacing-xs) 0;
     }
 
     .main-nav {
         display: flex;
         justify-content: center;
-        padding: var(--spacing-md) 0;
-        max-width: 1200px;
+        padding: var(--spacing-sm) 0;
         margin: 0 auto;
         flex-wrap: wrap;
+        width: 100%;
+        text-align: center;
     }
 
     .nav-item {
         margin: 0 var(--spacing-lg);
-        font-weight: 500;
+        font-weight: 600; /* 增加字体粗细 */
         color: var(--text-primary);
         position: relative;
         text-decoration: none;
-        padding: var(--spacing-xs) 0;
+        padding: var(--spacing-sm) 0;
+        font-size: 1.05rem; /* 稍微增大导航字体 */
+        display: inline-block;
     }
 
     .nav-item:after {
@@ -204,18 +219,21 @@
 
     .section-title {
         text-align: center;
-        margin-bottom: var(--spacing-lg);
+        margin-bottom: var(--spacing-xl);
         position: relative;
-        font-size: 1.8rem;
+        font-size: 2rem;
+        color: var(--text-primary);
+        font-weight: 700;
     }
 
     .section-title:after {
         content: "";
         display: block;
-        width: 60px;
-        height: 3px;
-        background-color: var(--primary-color);
+        width: 80px;
+        height: 4px;
+        background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
         margin: var(--spacing-sm) auto;
+        border-radius: 2px;
     }
 
     .section-text {
@@ -223,33 +241,38 @@
         max-width: 800px;
         margin: 0 auto var(--spacing-xl);
         color: var(--text-secondary);
+        font-size: 1.1rem;
+        line-height: 1.7;
     }
 
     /* 特性卡片样式 */
     .features-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: var(--spacing-lg);
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: var(--spacing-xl);
         margin-bottom: var(--spacing-xl);
     }
 
     .feature-card {
         background-color: white;
-        border-radius: var(--radius-md);
+        border-radius: var(--radius-lg);
         padding: var(--spacing-xl);
         box-shadow: var(--shadow-sm);
         text-align: center;
         transition: var(--transition);
+        border: 1px solid var(--border-color);
     }
 
     .feature-card:hover {
-        transform: translateY(-5px);
+        transform: translateY(-8px);
         box-shadow: var(--shadow-md);
+        border-color: var(--secondary-color);
     }
 
     .feature-icon {
-        font-size: 3rem;
+        font-size: 3.2rem;
         margin-bottom: var(--spacing-md);
+        color: var(--primary-color);
     }
 
     /* 流程步骤样式 */
@@ -299,16 +322,22 @@
 
     .contract-type {
         background-color: white;
-        border-radius: var(--radius-md);
+        border-radius: var(--radius-lg);
         padding: var(--spacing-xl);
         box-shadow: var(--shadow-sm);
         text-align: center;
         transition: var(--transition);
+        border: 1px solid var(--border-color);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        min-height: 280px;
     }
 
     .contract-type:hover {
-        transform: translateY(-5px);
+        transform: translateY(-8px);
         box-shadow: var(--shadow-md);
+        border-color: var(--secondary-color);
     }
 
     .contract-icon {
@@ -320,18 +349,22 @@
         display: inline-block;
         background-color: var(--primary-color);
         color: white;
-        padding: var(--spacing-sm) var(--spacing-lg);
-        border-radius: var(--radius-sm);
+        padding: var(--spacing-sm) var(--spacing-xl);
+        border-radius: var(--radius-md);
         text-decoration: none;
         margin-top: var(--spacing-md);
         transition: var(--transition);
         border: none;
         font-size: 1rem;
+        font-weight: 600;
+        letter-spacing: 0.5px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.15);
     }
 
     .generate-btn:hover, .custom-btn:hover {
         background-color: var(--primary-dark);
-        transform: translateY(-2px);
+        transform: translateY(-3px);
+        box-shadow: 0 4px 12px rgba(0,0,0,0.2);
     }
 
     /* 服务类型样式 */
@@ -1026,7 +1059,7 @@
             </ul>
         </section>
 
-        <section class="services-section">
+        <section class="services-section" id="services-section">
             <h2 class="section-title">服务内容</h2>
             <ul class="services-list">
                 <li><strong>文书生成：</strong>自动生成各类法律文书，如起诉状、答辩状、合同协议等。</li>
@@ -1036,7 +1069,7 @@
             </ul>
         </section>
 
-        <section class="contract-generator">
+        <section class="contract-generator" id="contract-generator">
             <h2 class="section-title">智能合同服务</h2>
             <p class="section-text">根据您的具体需求，我们的AI系统能自动生成专业、合规的合同文本，并有专业律师审核把关。</p>
             
@@ -1259,20 +1292,20 @@
                 const sections = document.querySelectorAll('section[id]');
                 const navItems = document.querySelectorAll('.nav-item');
                 
-                let currentSection = '';
+                let current = '';
                 
                 sections.forEach(section => {
                     const sectionTop = section.offsetTop;
                     const sectionHeight = section.clientHeight;
                     
                     if (window.pageYOffset >= sectionTop - 100) {
-                        currentSection = '#' + section.getAttribute('id');
+                        current = '#' + section.getAttribute('id');
                     }
                 });
                 
                 navItems.forEach(item => {
                     item.classList.remove('active');
-                    if (item.getAttribute('href') === currentSection) {
+                    if (item.getAttribute('href') === current) {
                         item.classList.add('active');
                     }
                 });
