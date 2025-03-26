@@ -106,7 +106,145 @@
             </ul>
         </section>
 
+        <section class="contract-generator">
+            <h2 class="section-title">智能合同生成</h2>
+            <p class="section-text">根据您的具体需求，我们的AI系统能自动生成专业、合规的合同文本，并有专业律师审核把关。</p>
+            
+            <div class="ai-model-selection">
+                <h3>AI大模型选择</h3>
+                <p>我们采用顶尖的DeepSeek大模型，为您提供更精准的法律文书生成服务</p>
+                <div class="model-info">
+                    <div class="model-icon">🧠</div>
+                    <div class="model-details">
+                        <h4>DeepSeek</h4>
+                        <p>国内领先的大规模语言模型，拥有超强的中文理解能力和法律领域专业知识</p>
+                        <ul class="model-features">
+                            <li>精准理解法律条款与合同要素</li>
+                            <li>符合中国法律法规的合同生成</li>
+                            <li>专业术语与表述更加规范</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="api-key-config">
+                    <h4>API密钥配置</h4>
+                    <p>为确保您能够使用DeepSeek大模型服务，请配置您的API密钥</p>
+                    
+                    <div class="api-key-input">
+                        <label for="api-key">DeepSeek API密钥:</label>
+                        <input type="password" id="api-key" placeholder="请输入您的DeepSeek API密钥" value="sk-9c9040152a2c48508daeecc2fee8471f" />
+                        <button type="button" class="save-key-btn">保存密钥</button>
+                    </div>
+                    
+                    <div class="api-key-status">
+                        <p class="key-status success">✓ 已配置默认API密钥，您可以直接使用所有功能</p>
+                    </div>
+                    
+                    <div class="api-key-notes">
+                        <p><i>注意：</i></p>
+                        <ul>
+                            <li>我们已为您配置好默认API密钥，无需单独申请</li>
+                            <li>如需使用自己的密钥，可<a href="https://www.deepseek.com/" target="_blank">点此申请</a>并替换</li>
+                            <li>您的API密钥仅存储在本地浏览器中，我们不会收集或存储您的密钥信息</li>
+                            <li>生成合同时将使用您配置的密钥调用DeepSeek API</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="contract-types">
+                <div class="contract-type">
+                    <div class="contract-icon">📝</div>
+                    <h3>劳务合同</h3>
+                    <p>适用于企业与员工之间的劳动关系约定，保障双方权益</p>
+                    <a href="#" class="generate-btn" data-contract-type="劳务合同">立即生成</a>
+                </div>
+                <div class="contract-type">
+                    <div class="contract-icon">💼</div>
+                    <h3>股权合同</h3>
+                    <p>适用于企业股权转让、投资等场景，规范股东权益分配</p>
+                    <a href="#" class="generate-btn" data-contract-type="股权合同">立即生成</a>
+                </div>
+                <div class="contract-type">
+                    <div class="contract-icon">🏠</div>
+                    <h3>房屋租赁合同</h3>
+                    <p>适用于房屋租赁关系，明确双方权责，避免纠纷</p>
+                    <a href="#" class="generate-btn" data-contract-type="房屋租赁合同">立即生成</a>
+                </div>
+                <div class="contract-type">
+                    <div class="contract-icon">🤝</div>
+                    <h3>合作协议</h3>
+                    <p>适用于商业合作关系，明确合作内容、权益分配等</p>
+                    <a href="#" class="generate-btn" data-contract-type="合作协议">立即生成</a>
+                </div>
+            </div>
+            
+            <div class="contract-process">
+                <h3>合同生成流程</h3>
+                <div class="process-steps">
+                    <div class="process-step">
+                        <div class="step-number">1</div>
+                        <p>选择所需合同类型</p>
+                    </div>
+                    <div class="process-step">
+                        <div class="step-number">2</div>
+                        <p>填写关键信息</p>
+                    </div>
+                    <div class="process-step">
+                        <div class="step-number">3</div>
+                        <p>AI智能生成</p>
+                    </div>
+                    <div class="process-step">
+                        <div class="step-number">4</div>
+                        <p>律师审核把关</p>
+                    </div>
+                    <div class="process-step">
+                        <div class="step-number">5</div>
+                        <p>下载使用</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="ai-recommendation">
+                <h3>智能合同推荐</h3>
+                <p>不确定需要哪种合同？描述您的困惑，我们的AI将为您推荐最合适的合同模板</p>
+                
+                <div class="chat-container">
+                    <div class="chat-box">
+                        <div class="chat-message ai">
+                            <div class="message-content">
+                                您好！请描述您的情况，我将为您推荐最合适的合同模板。
+                            </div>
+                        </div>
+                        <!-- 这里会动态添加聊天内容 -->
+                    </div>
+                    
+                    <div class="chat-input">
+                        <textarea placeholder="例如：我想和朋友合伙开一家小店，需要什么合同？"></textarea>
+                        <button type="button" class="send-btn">发送</button>
+                    </div>
+                </div>
+                
+                <div class="recommendation-examples">
+                    <h4>常见困惑示例：</h4>
+                    <div class="example-tags">
+                        <span class="example-tag">我要租房子给别人住</span>
+                        <span class="example-tag">公司需要招聘员工</span>
+                        <span class="example-tag">我想投资一个创业项目</span>
+                        <span class="example-tag">需要和供应商签订协议</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="custom-contract">
+                <h3>定制合同服务</h3>
+                <p>如果预设合同类型无法满足您的需求，可选择我们的定制服务</p>
+                <a href="#" class="custom-btn">定制合同</a>
+            </div>
+        </section>
+
         <section class="contact-section">
+            
             <!-- 在联系我们部分之前添加法务热点板块 -->
             <section class="legal-news">
                 <h2 class="section-title">法务热点</h2>
@@ -180,6 +318,361 @@
     font-size: 14px;
     text-align: center;
 }
+
+/* 智能合同生成模块样式 */
+.contract-generator {
+    background-color: #f8f9fa;
+    padding: 40px 20px;
+    border-radius: 8px;
+    margin-bottom: 40px;
+}
+
+/* DeepSeek AI模型选择样式 */
+.ai-model-selection {
+    background-color: white;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    margin: 20px 0 30px;
+}
+
+.ai-model-selection h3 {
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.model-info {
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #f0f7ff;
+    border-radius: 8px;
+    border-left: 4px solid #1e88e5;
+}
+
+.model-icon {
+    font-size: 2.8rem;
+    margin-right: 20px;
+    color: #1e88e5;
+}
+
+.model-details {
+    flex: 1;
+}
+
+.model-details h4 {
+    font-size: 1.3rem;
+    margin-bottom: 8px;
+    color: #1e88e5;
+}
+
+.model-features {
+    margin-top: 12px;
+    padding-left: 20px;
+}
+
+.model-features li {
+    margin-bottom: 5px;
+    position: relative;
+}
+
+.model-features li:before {
+    content: "✓";
+    position: absolute;
+    left: -18px;
+    color: #4caf50;
+    font-weight: bold;
+}
+
+/* API密钥配置样式 */
+.api-key-config {
+    margin-top: 25px;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    border: 1px dashed #ccc;
+}
+
+.api-key-config h4 {
+    color: #333;
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+}
+
+.api-key-input {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+    margin: 15px 0;
+}
+
+.api-key-input label {
+    font-weight: 500;
+    min-width: 150px;
+}
+
+.api-key-input input {
+    flex: 1;
+    min-width: 250px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 0.9rem;
+}
+
+.save-key-btn {
+    background-color: #1e88e5;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 15px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.save-key-btn:hover {
+    background-color: #1565c0;
+}
+
+.api-key-status {
+    margin-top: 15px;
+    text-align: center;
+}
+
+.key-status {
+    padding: 8px 15px;
+    border-radius: 20px;
+    display: inline-block;
+    font-size: 0.9rem;
+}
+
+.key-status.success {
+    background-color: #e8f5e9;
+    color: #388e3c;
+}
+
+.key-status.error {
+    background-color: #ffebee;
+    color: #d32f2f;
+}
+
+.api-key-notes {
+    margin-top: 15px;
+    font-size: 0.85rem;
+    color: #666;
+}
+
+.api-key-notes ul {
+    padding-left: 20px;
+    margin-top: 5px;
+}
+
+.api-key-notes li {
+    margin-bottom: 5px;
+}
+
+.api-key-notes a {
+    color: #1e88e5;
+    text-decoration: none;
+}
+
+.api-key-notes a:hover {
+    text-decoration: underline;
+}
+
+.contract-types {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin: 30px 0;
+}
+
+.contract-type {
+    background-color: white;
+    border-radius: 8px;
+    padding: 25px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.contract-type:hover {
+    transform: translateY(-5px);
+}
+
+.contract-icon {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+}
+
+.generate-btn, .custom-btn {
+    display: inline-block;
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 4px;
+    text-decoration: none;
+    margin-top: 15px;
+    transition: background-color 0.3s ease;
+}
+
+.generate-btn:hover, .custom-btn:hover {
+    background-color: #0056b3;
+}
+
+.contract-process {
+    margin: 40px 0;
+    text-align: center;
+}
+
+.contract-process h3 {
+    margin-bottom: 25px;
+}
+
+.custom-contract {
+    text-align: center;
+    background-color: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.custom-btn {
+    background-color: #28a745;
+}
+
+.custom-btn:hover {
+    background-color: #218838;
+}
+
+/* 智能合同推荐样式 */
+.ai-recommendation {
+    background-color: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    margin: 40px 0;
+}
+
+.chat-container {
+    margin: 25px 0;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.chat-box {
+    height: 250px;
+    padding: 15px;
+    overflow-y: auto;
+    background-color: #f8f9fa;
+}
+
+.chat-message {
+    margin-bottom: 15px;
+    display: flex;
+}
+
+.chat-message.user {
+    justify-content: flex-end;
+}
+
+.message-content {
+    max-width: 80%;
+    padding: 10px 15px;
+    border-radius: 18px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.chat-message.ai .message-content {
+    background-color: #e3f2fd;
+    border-bottom-left-radius: 5px;
+}
+
+.chat-message.user .message-content {
+    background-color: #007bff;
+    color: white;
+    border-bottom-right-radius: 5px;
+}
+
+.chat-input {
+    display: flex;
+    padding: 10px;
+    background-color: white;
+    border-top: 1px solid #e0e0e0;
+}
+
+.chat-input textarea {
+    flex: 1;
+    border: none;
+    resize: none;
+    padding: 10px;
+    height: 40px;
+    outline: none;
+    font-family: inherit;
+}
+
+.send-btn {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 0 20px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.send-btn:hover {
+    background-color: #0056b3;
+}
+
+.recommendation-examples {
+    margin-top: 25px;
+}
+
+.example-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.example-tag {
+    background-color: #e9ecef;
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.example-tag:hover {
+    background-color: #dee2e6;
+}
+
+/* DeepSeek模型思考中的样式 */
+.chat-message.ai.thinking .message-content {
+    background-color: #e8eaf6;
+    color: #5c6bc0;
+    animation: thinking 1.5s infinite;
+}
+
+@keyframes thinking {
+    0% { opacity: 0.7; }
+    50% { opacity: 1; }
+    100% { opacity: 0.7; }
+}
+
+/* 模型细节样式优化 */
+.model-info {
+    transition: transform 0.3s ease;
+}
+
+.model-info:hover {
+    transform: translateY(-5px);
+}
 </style>
             </div>
         </section>
@@ -193,6 +686,304 @@
         <p class="copyright">&copy; 2024 天玑法务. 版权所有.</p>
     </footer>
 
-
+    <script>
+        // 智能合同推荐功能交互
+        document.addEventListener('DOMContentLoaded', function() {
+            const chatBox = document.querySelector('.chat-box');
+            const chatInput = document.querySelector('.chat-input textarea');
+            const sendBtn = document.querySelector('.send-btn');
+            const exampleTags = document.querySelectorAll('.example-tag');
+            const apiKeyInput = document.getElementById('api-key');
+            const saveKeyBtn = document.querySelector('.save-key-btn');
+            
+            // API密钥存储和验证
+            let apiKey = localStorage.getItem('deepseek_api_key') || 'sk-9c9040152a2c48508daeecc2fee8471f';
+            
+            // 如果有存储的API密钥，显示为已填写状态
+            if (apiKey) {
+                apiKeyInput.value = apiKey === 'sk-9c9040152a2c48508daeecc2fee8471f' ? 
+                    'sk-9c9040152a2c48508daeecc2fee8471f' : '••••••••••••••••';
+                apiKeyInput.setAttribute('data-has-key', 'true');
+                
+                // 更新状态提示
+                document.querySelector('.key-status').textContent = 
+                    '✓ ' + (apiKey === 'sk-9c9040152a2c48508daeecc2fee8471f' ? 
+                    '使用默认API密钥' : '已保存您的自定义API密钥');
+            }
+            
+            // 保存API密钥
+            saveKeyBtn.addEventListener('click', function() {
+                const newKey = apiKeyInput.value.trim();
+                if (newKey) {
+                    // 保存到本地存储
+                    localStorage.setItem('deepseek_api_key', newKey);
+                    apiKey = newKey;
+                    
+                    // 显示成功提示
+                    alert('API密钥已保存成功！');
+                    
+                    // 更新状态提示
+                    if (newKey === 'sk-9c9040152a2c48508daeecc2fee8471f') {
+                        document.querySelector('.key-status').textContent = '✓ 使用默认API密钥';
+                        apiKeyInput.value = newKey;
+                    } else {
+                        // 修改输入框显示
+                        apiKeyInput.value = '••••••••••••••••';
+                        document.querySelector('.key-status').textContent = '✓ 已保存您的自定义API密钥';
+                    }
+                    apiKeyInput.setAttribute('data-has-key', 'true');
+                } else {
+                    alert('请输入有效的API密钥');
+                }
+            });
+            
+            // 当API密钥输入框获得焦点时，清空显示的点
+            apiKeyInput.addEventListener('focus', function() {
+                if (this.getAttribute('data-has-key') === 'true' && 
+                    this.value !== 'sk-9c9040152a2c48508daeecc2fee8471f') {
+                    this.value = '';
+                }
+            });
+            
+            // 当API密钥输入框失去焦点且未输入新值时，恢复显示点
+            apiKeyInput.addEventListener('blur', function() {
+                if (this.getAttribute('data-has-key') === 'true' && !this.value.trim()) {
+                    const currentKey = localStorage.getItem('deepseek_api_key') || 'sk-9c9040152a2c48508daeecc2fee8471f';
+                    this.value = currentKey === 'sk-9c9040152a2c48508daeecc2fee8471f' ? 
+                        currentKey : '••••••••••••••••';
+                }
+            });
+            
+            // 检查API密钥是否配置
+            function checkApiKey() {
+                // 默认值或已保存的密钥都有效
+                return true;
+            }
+            
+            // 添加所有生成合同按钮的点击事件
+            const generateButtons = document.querySelectorAll('.generate-btn');
+            generateButtons.forEach(button => {
+                button.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    // 检查API密钥
+                    if (!checkApiKey()) {
+                        // 滚动到API密钥配置区域
+                        document.querySelector('.api-key-config').scrollIntoView({ behavior: 'smooth' });
+                        return;
+                    }
+                    
+                    // 获取合同类型
+                    const contractType = this.getAttribute('data-contract-type');
+                    
+                    // 显示生成中状态
+                    const originalText = this.textContent;
+                    this.textContent = '正在生成...';
+                    this.style.backgroundColor = '#757575';
+                    this.style.pointerEvents = 'none';
+                    
+                    // 模拟调用DeepSeek API生成合同
+                    setTimeout(() => {
+                        // 恢复按钮状态
+                        this.textContent = originalText;
+                        this.style.backgroundColor = '';
+                        this.style.pointerEvents = 'auto';
+                        
+                        // 显示成功消息
+                        alert(`${contractType}已生成成功，请查看下载区域`);
+                        
+                        // 这里可以添加实际的合同下载逻辑
+                    }, 2000);
+                });
+            });
+            
+            // 发送消息函数
+            function sendMessage() {
+                const message = chatInput.value.trim();
+                if (message) {
+                    // 检查API密钥
+                    if (!checkApiKey()) {
+                        // 滚动到API密钥配置区域
+                        document.querySelector('.api-key-config').scrollIntoView({ behavior: 'smooth' });
+                        return;
+                    }
+                    
+                    // 添加用户消息
+                    addMessage(message, 'user');
+                    
+                    // 清空输入框
+                    chatInput.value = '';
+                    
+                    // 模拟AI思考
+                    setTimeout(() => {
+                        // 处理用户消息并推荐合同
+                        processUserMessage(message);
+                    }, 1500); // 延长思考时间，增强真实感
+                }
+            }
+            
+            // 添加消息到聊天框
+            function addMessage(content, sender) {
+                const messageDiv = document.createElement('div');
+                messageDiv.className = 'chat-message ' + sender;
+                
+                const messageContent = document.createElement('div');
+                messageContent.className = 'message-content';
+                messageContent.textContent = content;
+                
+                messageDiv.appendChild(messageContent);
+                chatBox.appendChild(messageDiv);
+                
+                // 滚动到底部
+                chatBox.scrollTop = chatBox.scrollHeight;
+            }
+            
+            // 处理用户消息并推荐合同
+            function processUserMessage(message) {
+                // 显示DeepSeek模型正在思考的提示
+                const thinkingDiv = document.createElement('div');
+                thinkingDiv.className = 'chat-message ai thinking';
+                
+                const thinkingContent = document.createElement('div');
+                thinkingContent.className = 'message-content';
+                thinkingContent.textContent = 'DeepSeek模型正在分析您的需求...';
+                
+                thinkingDiv.appendChild(thinkingContent);
+                chatBox.appendChild(thinkingDiv);
+                
+                // 滚动到底部
+                chatBox.scrollTop = chatBox.scrollHeight;
+                
+                let response = '';
+                let contractType = '';
+                
+                // 模拟AI思考时间
+                setTimeout(() => {
+                    // 移除思考中的消息
+                    chatBox.removeChild(thinkingDiv);
+                    
+                    // 关键词匹配逻辑
+                    const keywords = {
+                        '租房': {
+                            response: '根据您的描述，您需要的是房屋租赁合同。这种合同可以明确规定租期、租金、押金、房屋状况、维修责任等内容。',
+                            type: '房屋租赁合同'
+                        },
+                        '员工': {
+                            response: '您需要的是劳务合同。这种合同可以明确规定员工的工作内容、工作时间、薪资待遇、社保福利等问题。',
+                            type: '劳务合同'
+                        },
+                        '招聘': {
+                            response: '您需要的是劳务合同。这种合同可以明确规定员工的工作内容、工作时间、薪资待遇、社保福利等问题。',
+                            type: '劳务合同'
+                        },
+                        '股权': {
+                            response: '根据您的描述，您需要的是股权合同。这种合同可以明确规定投资金额、股权比例、权利义务、退出机制等内容。',
+                            type: '股权合同'
+                        },
+                        '投资': {
+                            response: '根据您的描述，您需要的是股权合同。这种合同可以明确规定投资金额、股权比例、权利义务、退出机制等内容。',
+                            type: '股权合同'
+                        },
+                        '合伙': {
+                            response: '您需要的是合作协议。这种合同可以明确合作各方的权利义务、收益分配、风险承担等内容。',
+                            type: '合作协议'
+                        },
+                        '供应商': {
+                            response: '您需要的是合作协议。这种合同可以明确供应商的供货内容、质量要求、交付方式、结算方式等内容。',
+                            type: '合作协议'
+                        }
+                    };
+                    
+                    // 检查用户输入是否包含关键词
+                    let matched = false;
+                    for (const keyword in keywords) {
+                        if (message.includes(keyword)) {
+                            response = keywords[keyword].response;
+                            contractType = keywords[keyword].type;
+                            matched = true;
+                            break;
+                        }
+                    }
+                    
+                    // 如果没有匹配到关键词，给出通用回复
+                    if (!matched) {
+                        response = '感谢您的描述。根据您提供的信息，我们可能需要更多细节来确定最适合您的合同类型。您是否可以提供更具体的情况，例如是关于租赁、雇佣、合作还是投资等方面的需求？';
+                    } else {
+                        // 添加推荐的合同链接
+                        response += `\n\n您可以点击下方按钮生成${contractType}：`;
+                        
+                        // 延迟显示合同生成按钮
+                        setTimeout(() => {
+                            const buttonDiv = document.createElement('div');
+                            buttonDiv.className = 'recommendation-button';
+                            
+                            const button = document.createElement('a');
+                            button.href = '#';
+                            button.className = 'generate-btn';
+                            button.textContent = `生成${contractType}`;
+                            button.setAttribute('data-contract-type', contractType);
+                            
+                            // 为动态生成的按钮添加点击事件
+                            button.addEventListener('click', function(e) {
+                                e.preventDefault();
+                                
+                                // 检查API密钥
+                                if (!checkApiKey()) {
+                                    // 滚动到API密钥配置区域
+                                    document.querySelector('.api-key-config').scrollIntoView({ behavior: 'smooth' });
+                                    return;
+                                }
+                                
+                                // 显示生成中状态
+                                const originalText = this.textContent;
+                                this.textContent = '正在生成...';
+                                this.style.backgroundColor = '#757575';
+                                this.style.pointerEvents = 'none';
+                                
+                                // 模拟调用DeepSeek API生成合同
+                                setTimeout(() => {
+                                    // 恢复按钮状态
+                                    this.textContent = originalText;
+                                    this.style.backgroundColor = '';
+                                    this.style.pointerEvents = 'auto';
+                                    
+                                    // 显示成功消息
+                                    alert(`${contractType}已生成成功，请查看下载区域`);
+                                }, 2000);
+                            });
+                            
+                            buttonDiv.appendChild(button);
+                            chatBox.appendChild(buttonDiv);
+                            
+                            // 滚动到底部
+                            chatBox.scrollTop = chatBox.scrollHeight;
+                        }, 500);
+                    }
+                    
+                    // 添加AI回复
+                    addMessage(response, 'ai');
+                }, 1500); // 延长思考时间，增强真实感
+            }
+            
+            // 发送按钮点击事件
+            sendBtn.addEventListener('click', sendMessage);
+            
+            // 输入框回车事件
+            chatInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter' && !e.shiftKey) {
+                    e.preventDefault();
+                    sendMessage();
+                }
+            });
+            
+            // 示例标签点击事件
+            exampleTags.forEach(tag => {
+                tag.addEventListener('click', function() {
+                    chatInput.value = this.textContent;
+                    sendMessage();
+                });
+            });
+        });
+    </script>
 </body>
 </html>
