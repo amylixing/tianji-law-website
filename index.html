@@ -126,49 +126,40 @@
                     </div>
                 </div>
                 
-                <div class="api-key-config">
-                    <h4>API密钥配置</h4>
-                    <p>我们已为您配置好DeepSeek大模型API密钥，您可以直接使用所有功能</p>
-                    
-                    <div class="api-key-status">
-                        <p class="key-status success">✓ API密钥已配置完成，无需任何设置</p>
-                    </div>
-                    
-                    <div class="api-key-notes">
-                        <p><i>说明：</i></p>
-                        <ul>
-                            <li>所有合同生成功能均使用官方提供的API密钥</li>
-                            <li>我们使用密钥：sk-9c9040152a2c48508daeecc2fee8471f</li>
-                            <li>无需您进行任何配置，直接体验全部功能</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
             
             <div class="contract-types">
                 <div class="contract-type">
                     <div class="contract-icon">📝</div>
                     <h3>劳务合同</h3>
                     <p>适用于企业与员工之间的劳动关系约定，保障双方权益</p>
-                    <a href="#" class="generate-btn" data-contract-type="劳务合同">立即生成</a>
+                    <button class="generate-btn" data-contract-type="劳务合同">立即生成</button>
                 </div>
                 <div class="contract-type">
                     <div class="contract-icon">💼</div>
                     <h3>股权合同</h3>
                     <p>适用于企业股权转让、投资等场景，规范股东权益分配</p>
-                    <a href="#" class="generate-btn" data-contract-type="股权合同">立即生成</a>
+                    <button class="generate-btn" data-contract-type="股权合同">立即生成</button>
                 </div>
                 <div class="contract-type">
                     <div class="contract-icon">🏠</div>
                     <h3>房屋租赁合同</h3>
                     <p>适用于房屋租赁关系，明确双方权责，避免纠纷</p>
-                    <a href="#" class="generate-btn" data-contract-type="房屋租赁合同">立即生成</a>
+                    <button class="generate-btn" data-contract-type="房屋租赁合同">立即生成</button>
                 </div>
                 <div class="contract-type">
                     <div class="contract-icon">🤝</div>
                     <h3>合作协议</h3>
                     <p>适用于商业合作关系，明确合作内容、权益分配等</p>
-                    <a href="#" class="generate-btn" data-contract-type="合作协议">立即生成</a>
+                    <button class="generate-btn" data-contract-type="合作协议">立即生成</button>
+                </div>
+            </div>
+            
+            <!-- 合同下载区 -->
+            <div class="contract-download-area">
+                <h3>合同下载区</h3>
+                <p>在这里查看和下载您生成的合同文件</p>
+                <div class="download-list">
+                    <div class="empty-tips">暂无生成的合同文件</div>
                 </div>
             </div>
             
@@ -640,6 +631,272 @@
 .model-info:hover {
     transform: translateY(-5px);
 }
+
+/* 合同下载区域样式 */
+.contract-download-area {
+    background-color: white;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    margin: 30px 0;
+}
+
+.contract-download-area h3 {
+    color: #333;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.contract-download-area p {
+    color: #666;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.download-list {
+    border: 1px dashed #e0e0e0;
+    border-radius: 6px;
+    padding: 20px;
+    min-height: 100px;
+    background-color: #fafafa;
+}
+
+.empty-tips {
+    color: #9e9e9e;
+    text-align: center;
+    font-style: italic;
+    margin: 20px 0;
+}
+
+.download-item {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    background-color: #f0f7ff;
+    border-radius: 6px;
+    margin-bottom: 10px;
+    transition: transform 0.2s ease;
+}
+
+.download-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.download-icon {
+    font-size: 1.8rem;
+    margin-right: 15px;
+    color: #1e88e5;
+}
+
+.download-info {
+    flex: 1;
+}
+
+.download-name {
+    font-weight: 500;
+    margin-bottom: 5px;
+}
+
+.download-meta {
+    font-size: 0.85rem;
+    color: #757575;
+}
+
+.download-button {
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 8px 15px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.download-button:hover {
+    background-color: #388e3c;
+}
+
+.contract-process {
+    margin: 40px 0;
+    text-align: center;
+}
+
+/* 合同对话窗样式 */
+.contract-dialog {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1001;
+    overflow: auto;
+}
+
+.dialog-content {
+    background-color: white;
+    margin: 50px auto;
+    width: 90%;
+    max-width: 600px;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    animation: dialogFadeIn 0.3s ease;
+    max-height: 85vh;
+    display: flex;
+    flex-direction: column;
+}
+
+@keyframes dialogFadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.dialog-header {
+    padding: 15px 20px;
+    border-bottom: 1px solid #e0e0e0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.dialog-header h3 {
+    margin: 0;
+    color: #333;
+    font-size: 1.2rem;
+}
+
+.close-dialog {
+    font-size: 1.5rem;
+    color: #757575;
+    cursor: pointer;
+    line-height: 1;
+}
+
+.close-dialog:hover {
+    color: #333;
+}
+
+.dialog-body {
+    padding: 20px;
+    overflow-y: auto;
+    flex: 1;
+}
+
+.contract-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+#contract-type-title {
+    color: #1e88e5;
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 5px;
+}
+
+.form-tip {
+    color: #757575;
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 0.9rem;
+}
+
+.form-fields {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group.full-width {
+    grid-column: span 2;
+}
+
+.form-group label {
+    margin-bottom: 5px;
+    font-weight: 500;
+    color: #555;
+}
+
+.form-group input, .form-group textarea {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 0.9rem;
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+
+.dialog-footer {
+    padding: 15px 20px;
+    border-top: 1px solid #e0e0e0;
+    text-align: right;
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+.cancel-btn {
+    background-color: #f5f5f5;
+    color: #333;
+    border: 1px solid #ddd;
+    padding: 8px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.cancel-btn:hover {
+    background-color: #e0e0e0;
+}
+
+.generate-contract-btn {
+    background-color: #1e88e5;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.generate-contract-btn:hover {
+    background-color: #1565c0;
+}
+
+.dialog-loading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+    text-align: center;
+}
+
+.loading-spinner {
+    width: 50px;
+    height: 50px;
+    border: 5px solid #f3f3f3;
+    border-top: 5px solid #1e88e5;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-bottom: 20px;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
 </style>
             </div>
         </section>
@@ -653,16 +910,129 @@
         <p class="copyright">&copy; 2024 天玑法务. 版权所有.</p>
     </footer>
 
+    <!-- 合同生成对话窗 -->
+    <div id="contract-dialog" class="contract-dialog">
+        <div class="dialog-content">
+            <div class="dialog-header">
+                <h3 id="dialog-title">合同生成</h3>
+                <span class="close-dialog">&times;</span>
+            </div>
+            <div class="dialog-body">
+                <div class="contract-form">
+                    <h4 id="contract-type-title">劳动合同</h4>
+                    <p class="form-tip">请填写以下信息以生成定制合同</p>
+                    
+                    <div class="form-fields" id="form-fields">
+                        <!-- 表单字段将根据合同类型动态生成 -->
+                    </div>
+                </div>
+                
+                <!-- 加载状态 -->
+                <div class="dialog-loading" style="display: none;">
+                    <div class="loading-spinner"></div>
+                    <p>正在生成您的合同，请稍候...</p>
+                </div>
+            </div>
+            <div class="dialog-footer">
+                <button class="cancel-btn">取消</button>
+                <button class="generate-contract-btn">生成合同</button>
+            </div>
+        </div>
+    </div>
+
     <script>
-        // 智能合同推荐功能交互
         document.addEventListener('DOMContentLoaded', function() {
             const chatBox = document.querySelector('.chat-box');
             const chatInput = document.querySelector('.chat-input textarea');
             const sendBtn = document.querySelector('.send-btn');
             const exampleTags = document.querySelectorAll('.example-tag');
+            const downloadList = document.querySelector('.download-list');
+            const contractDialog = document.getElementById('contract-dialog');
+            const dialogFormFields = document.getElementById('form-fields');
+            const contractTypeTitle = document.getElementById('contract-type-title');
+            const dialogTitle = document.getElementById('dialog-title');
+            const closeDialog = document.querySelector('.close-dialog');
+            const cancelBtn = document.querySelector('.cancel-btn');
+            const generateContractBtn = document.querySelector('.generate-contract-btn');
             
             // 固定使用提供的API密钥
             const apiKey = 'sk-9c9040152a2c48508daeecc2fee8471f';
+            
+            // 合同类型和对应的模板内容
+            const contractTemplates = {
+                '劳务合同': '劳务合同模板内容',
+                '股权合同': '股权合同模板内容',
+                '房屋租赁合同': '房屋租赁合同模板内容',
+                '合作协议': '合作协议模板内容'
+            };
+            
+            // 各类合同表单字段配置
+            const formFieldsConfig = {
+                '劳务合同': [
+                    { name: 'employer', label: '雇主名称', placeholder: '请输入雇主全称', type: 'text' },
+                    { name: 'employee', label: '雇员姓名', placeholder: '请输入雇员姓名', type: 'text' },
+                    { name: 'position', label: '工作职位', placeholder: '如：产品经理、软件工程师等', type: 'text' },
+                    { name: 'salary', label: '月薪范围（元）', placeholder: '如：8000-10000', type: 'text' },
+                    { name: 'duration', label: '合同期限（月）', placeholder: '如：12、24、36等', type: 'number' },
+                    { name: 'requirements', label: '其他特殊需求（选填）', placeholder: '请输入您的特殊需求，AI将尽量满足...', type: 'textarea', fullWidth: true }
+                ],
+                '股权合同': [
+                    { name: 'company', label: '公司名称', placeholder: '请输入公司全称', type: 'text' },
+                    { name: 'investor', label: '投资方名称', placeholder: '请输入投资方全称', type: 'text' },
+                    { name: 'amount', label: '投资金额（元）', placeholder: '如：1000000', type: 'text' },
+                    { name: 'percentage', label: '股权比例（%）', placeholder: '如：10、15.5等', type: 'text' },
+                    { name: 'requirements', label: '其他特殊需求（选填）', placeholder: '请输入您的特殊需求，AI将尽量满足...', type: 'textarea', fullWidth: true }
+                ],
+                '房屋租赁合同': [
+                    { name: 'landlord', label: '出租方姓名', placeholder: '请输入出租方姓名', type: 'text' },
+                    { name: 'tenant', label: '承租方姓名', placeholder: '请输入承租方姓名', type: 'text' },
+                    { name: 'address', label: '房屋地址', placeholder: '请输入详细地址', type: 'text' },
+                    { name: 'rent', label: '月租金（元）', placeholder: '如：3000', type: 'text' },
+                    { name: 'duration', label: '租期（月）', placeholder: '如：12', type: 'number' },
+                    { name: 'requirements', label: '其他特殊需求（选填）', placeholder: '请输入您的特殊需求，AI将尽量满足...', type: 'textarea', fullWidth: true }
+                ],
+                '合作协议': [
+                    { name: 'partyA', label: '甲方名称', placeholder: '请输入甲方全称', type: 'text' },
+                    { name: 'partyB', label: '乙方名称', placeholder: '请输入乙方全称', type: 'text' },
+                    { name: 'project', label: '合作项目名称', placeholder: '请输入合作项目名称', type: 'text' },
+                    { name: 'duration', label: '合作期限（月）', placeholder: '如：12、24等', type: 'number' },
+                    { name: 'requirements', label: '其他特殊需求（选填）', placeholder: '请输入您的特殊需求，AI将尽量满足...', type: 'textarea', fullWidth: true }
+                ]
+            };
+            
+            // 渲染表单字段
+            function renderFormFields(contractType) {
+                // 清空表单字段
+                dialogFormFields.innerHTML = '';
+                
+                // 获取合同类型对应的表单字段配置
+                const fields = formFieldsConfig[contractType] || [];
+                
+                // 渲染表单字段
+                fields.forEach(field => {
+                    const fieldDiv = document.createElement('div');
+                    fieldDiv.className = field.fullWidth ? 'form-group full-width' : 'form-group';
+                    
+                    const label = document.createElement('label');
+                    label.textContent = field.label;
+                    fieldDiv.appendChild(label);
+                    
+                    if (field.type === 'textarea') {
+                        const textarea = document.createElement('textarea');
+                        textarea.name = field.name;
+                        textarea.placeholder = field.placeholder;
+                        fieldDiv.appendChild(textarea);
+                    } else {
+                        const input = document.createElement('input');
+                        input.type = field.type;
+                        input.name = field.name;
+                        input.placeholder = field.placeholder;
+                        fieldDiv.appendChild(input);
+                    }
+                    
+                    dialogFormFields.appendChild(fieldDiv);
+                });
+            }
             
             // 添加所有生成合同按钮的点击事件
             const generateButtons = document.querySelectorAll('.generate-btn');
@@ -673,27 +1043,155 @@
                     // 获取合同类型
                     const contractType = this.getAttribute('data-contract-type');
                     
-                    // 显示生成中状态
-                    const originalText = this.textContent;
-                    this.textContent = '正在生成...';
-                    this.style.backgroundColor = '#757575';
-                    this.style.pointerEvents = 'none';
+                    // 设置对话窗标题
+                    dialogTitle.textContent = `生成${contractType}`;
+                    contractTypeTitle.textContent = contractType;
                     
-                    // 模拟调用DeepSeek API生成合同
-                    // 在实际应用中，这里会使用apiKey调用DeepSeek API
-                    setTimeout(() => {
-                        // 恢复按钮状态
-                        this.textContent = originalText;
-                        this.style.backgroundColor = '';
-                        this.style.pointerEvents = 'auto';
-                        
-                        // 显示成功消息
-                        alert(`${contractType}已生成成功，请查看下载区域`);
-                        
-                        // 这里可以添加实际的合同下载逻辑
-                    }, 2000);
+                    // 渲染表单字段
+                    renderFormFields(contractType);
+                    
+                    // 显示对话窗
+                    contractDialog.style.display = 'block';
+                    document.body.style.overflow = 'hidden'; // 防止背景滚动
                 });
             });
+            
+            // 关闭对话窗
+            function closeContractDialog() {
+                contractDialog.style.display = 'none';
+                document.body.style.overflow = ''; // 恢复背景滚动
+                
+                // 重置表单
+                dialogFormFields.innerHTML = '';
+                
+                // 隐藏加载状态
+                document.querySelector('.dialog-loading').style.display = 'none';
+                document.querySelector('.contract-form').style.display = 'block';
+            }
+            
+            // 关闭按钮点击事件
+            closeDialog.addEventListener('click', closeContractDialog);
+            
+            // 取消按钮点击事件
+            cancelBtn.addEventListener('click', closeContractDialog);
+            
+            // 点击对话窗背景关闭对话窗
+            contractDialog.addEventListener('click', function(e) {
+                if (e.target === contractDialog) {
+                    closeContractDialog();
+                }
+            });
+            
+            // 生成合同按钮点击事件
+            generateContractBtn.addEventListener('click', function() {
+                // 获取表单数据
+                const contractType = contractTypeTitle.textContent;
+                
+                // 显示加载状态
+                document.querySelector('.contract-form').style.display = 'none';
+                document.querySelector('.dialog-loading').style.display = 'flex';
+                
+                // 模拟API调用生成合同
+                setTimeout(() => {
+                    // 隐藏加载状态
+                    document.querySelector('.dialog-loading').style.display = 'none';
+                    document.querySelector('.contract-form').style.display = 'block';
+                    
+                    // 关闭对话窗
+                    closeContractDialog();
+                    
+                    // 生成合同并添加到下载区
+                    generateContract(contractType);
+                }, 2000);
+            });
+            
+            // 生成合同并添加到下载区域
+            function generateContract(contractType) {
+                // 移除空提示
+                const emptyTips = downloadList.querySelector('.empty-tips');
+                if (emptyTips) {
+                    emptyTips.style.display = 'none';
+                }
+                
+                // 创建一个唯一的合同ID
+                const contractId = 'contract_' + Date.now();
+                
+                // 获取当前日期
+                const now = new Date();
+                const dateStr = now.getFullYear() + '-' + 
+                              String(now.getMonth() + 1).padStart(2, '0') + '-' + 
+                              String(now.getDate()).padStart(2, '0');
+                
+                // 创建下载项
+                const downloadItem = document.createElement('div');
+                downloadItem.className = 'download-item';
+                downloadItem.id = contractId;
+                
+                // 设置下载项内容
+                downloadItem.innerHTML = `
+                    <div class="download-icon">📄</div>
+                    <div class="download-info">
+                        <div class="download-name">${contractType}_${dateStr}.docx</div>
+                        <div class="download-meta">生成时间: ${dateStr} | 大小: 约256KB</div>
+                    </div>
+                    <button class="download-button" data-contract-type="${contractType}" data-contract-id="${contractId}">下载</button>
+                `;
+                
+                // 添加到下载列表
+                downloadList.appendChild(downloadItem);
+                
+                // 为下载按钮添加事件监听
+                const downloadButton = downloadItem.querySelector('.download-button');
+                downloadButton.addEventListener('click', function() {
+                    downloadContract(this.getAttribute('data-contract-type'), this.getAttribute('data-contract-id'));
+                });
+                
+                // 显示成功消息
+                alert(`${contractType}已生成成功，请查看下载区域`);
+            }
+            
+            // 下载合同函数
+            function downloadContract(contractType, contractId) {
+                // 获取合同模板内容（实际应用中应该是从服务器获取）
+                const content = contractTemplates[contractType] || '默认合同内容';
+                
+                // 创建Blob对象
+                const blob = new Blob([content], {type: 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'});
+                
+                // 创建下载链接
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                
+                // 设置文件名
+                const now = new Date();
+                const dateStr = now.getFullYear() + '-' + 
+                              String(now.getMonth() + 1).padStart(2, '0') + '-' + 
+                              String(now.getDate()).padStart(2, '0');
+                
+                a.href = url;
+                a.download = `${contractType}_${dateStr}.docx`;
+                
+                // 触发下载
+                document.body.appendChild(a);
+                a.click();
+                
+                // 清理
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+                
+                // 更新下载按钮文本
+                const downloadButton = document.querySelector(`#${contractId} .download-button`);
+                if (downloadButton) {
+                    downloadButton.textContent = '已下载';
+                    downloadButton.style.backgroundColor = '#9e9e9e';
+                    
+                    // 5秒后恢复按钮状态
+                    setTimeout(() => {
+                        downloadButton.textContent = '下载';
+                        downloadButton.style.backgroundColor = '';
+                    }, 5000);
+                }
+            }
             
             // 发送消息函数
             function sendMessage() {
@@ -833,8 +1331,8 @@
                                     this.style.backgroundColor = '';
                                     this.style.pointerEvents = 'auto';
                                     
-                                    // 显示成功消息
-                                    alert(`${contractType}已生成成功，请查看下载区域`);
+                                    // 生成合同并添加到下载区
+                                    generateContract(contractType);
                                 }, 2000);
                             });
                             
