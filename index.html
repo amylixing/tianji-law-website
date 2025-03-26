@@ -262,38 +262,148 @@
             const styleSelect = document.getElementById('style-select');
             const imageResult = document.getElementById('image-result');
             
-            generateBtn.addEventListener('click', function() {
-                // 显示加载状态
-                imageResult.innerHTML = '<p>正在通过通义万相生成图示，请稍候...</p>';
-                
-                // 获取选择的风格
-                const selectedStyle = styleSelect.value;
-                
-                // 这里应该是实际的通义万相API调用逻辑
-                // 为了演示，我们使用setTimeout模拟API调用延迟
-                setTimeout(function() {
-                    // 示例：根据输入内容的不同，显示不同的示例图
-                    const input = textInput.value.toLowerCase();
-                    let imagePath = '';
+            // 通义万相API配置
+            const TONGYI_API_CONFIG = {
+                apiKey: '您的通义万相API密钥', // 替换为您的实际API密钥
+                apiEndpoint: 'https://dashscope.aliyuncs.com/api/v1/services/aigc/text2image/image-generation',
+                modelVersion: 'wanx-v1'
+            };
+            
+            // 调用通义万相API生成图像
+            async function generateImageWithTongyi(prompt, style) {
+                try {
+                    // 显示加载状态
+                    imageResult.innerHTML = '<p>正在通过通义万相生成图示，请稍候...</p>';
                     
-                    if(input.includes('房') || input.includes('买卖') || input.includes('合同')) {
-                        imagePath = 'assets/images/example-diagram-1.jpg';
-                    } else if(input.includes('离婚') || input.includes('财产')) {
-                        imagePath = 'assets/images/example-diagram-2.jpg';
-                    } else if(input.includes('劳动') || input.includes('争议')) {
-                        imagePath = 'assets/images/example-diagram-3.jpg';
-                    } else {
-                        // 默认图像
-                        imagePath = 'assets/images/default-diagram.jpg';
+                    // 构建API请求参数
+                    const stylePrompts = {
+                        'realistic': '写实风格的法律图示',
+                        'cartoon': '卡通风格的法律图示',
+                        'flow-chart': '清晰的法律流程图',
+                        'infographic': '信息图表风格的法律图示'
+                    };
+                    
+                    const stylePrompt = stylePrompts[style] || stylePrompts['cartoon'];
+                    const fullPrompt = `${prompt}，生成${stylePrompt}`;
+                    
+                    // API请求配置
+                    const requestData = {
+                        model: TONGYI_API_CONFIG.modelVersion,
+                        input: {
+                            prompt: fullPrompt
+                        },
+                        parameters: {
+                            // 根据通义万相API的实际参数调整
+                            width: 512,
+                            height: 512,
+                            n: 1,
+                            steps: 20,
+                            seed: Math.floor(Math.random() * 1000000)
+                        }
+                    };
+                    
+                    // 发送API请求
+                    const response = await fetch(TONGYI_API_CONFIG.apiEndpoint, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Authorization': `Bearer ${TONGYI_API_CONFIG.apiKey}`
+                        },
+                        body: JSON.stringify(requestData)
+                    });
+                    
+                    if (!response.ok) {
+                        throw new Error(`API请求失败：${response.status} ${response.statusText}`);
                     }
                     
-                    // 显示生成的图像
-                    imageResult.innerHTML = `
-                        <img src="${imagePath}" alt="通义万相生成的法律图示" style="max-width:100%; max-height:200px;">
-                        <p style="font-size: 12px; margin-top: 10px; text-align: center;">通义万相生成的${styleSelect.options[styleSelect.selectedIndex].text}风格图示</p>
-                    `;
-                }, 1500);
+                    const responseData = await response.json();
+                    
+                    // 处理API响应
+                    // 注意：根据通义万相API的实际响应格式调整以下代码
+                    if (responseData.output && responseData.output.images && responseData.output.images.length > 0) {
+                        const imageBase64 = responseData.output.images[0];
+                        displayGeneratedImage(imageBase64, style);
+                    } else {
+                        throw new Error('API返回的数据格式不正确');
+                    }
+                } catch (error) {
+                    console.error('生成图像时出错：', error);
+                    imageResult.innerHTML = `<p class="error-message">生成图像失败：${error.message}</p>`;
+                    
+                    // 错误情况下，回退到示例图片
+                    fallbackToExampleImage(prompt, style);
+                }
+            }
+            
+            // 显示生成的图像
+            function displayGeneratedImage(imageBase64, style) {
+                const styleName = styleSelect.options[styleSelect.selectedIndex].text;
+                imageResult.innerHTML = `
+                    <img src="data:image/png;base64,${imageBase64}" alt="通义万相生成的法律图示" style="max-width:100%; max-height:200px;">
+                    <p style="font-size: 12px; margin-top: 10px; text-align: center;">通义万相生成的${styleName}风格图示</p>
+                `;
+            }
+            
+            // 回退到示例图片（当API调用失败时）
+            function fallbackToExampleImage(prompt, style) {
+                const input = prompt.toLowerCase();
+                let imagePath = '';
+                
+                if(input.includes('房') || input.includes('买卖') || input.includes('合同')) {
+                    imagePath = 'assets/images/example-diagram-1.jpg';
+                } else if(input.includes('离婚') || input.includes('财产')) {
+                    imagePath = 'assets/images/example-diagram-2.jpg';
+                } else if(input.includes('劳动') || input.includes('争议')) {
+                    imagePath = 'assets/images/example-diagram-3.jpg';
+                } else {
+                    // 默认图像
+                    imagePath = 'assets/images/default-diagram.jpg';
+                }
+                
+                const styleName = styleSelect.options[styleSelect.selectedIndex].text;
+                imageResult.innerHTML = `
+                    <img src="${imagePath}" alt="示例法律图示" style="max-width:100%; max-height:200px;">
+                    <p style="font-size: 12px; margin-top: 10px; text-align: center;">(示例)${styleName}风格图示</p>
+                    <p style="font-size: 11px; color: #999;">API调用失败，显示示例图像</p>
+                `;
+            }
+            
+            // 按钮点击事件
+            generateBtn.addEventListener('click', function() {
+                const prompt = textInput.value.trim();
+                const style = styleSelect.value;
+                
+                if (prompt === '') {
+                    alert('请输入法律问题描述');
+                    return;
+                }
+                
+                // 调用通义万相API生成图像
+                // 如果配置了API密钥，则调用API
+                if (TONGYI_API_CONFIG.apiKey && TONGYI_API_CONFIG.apiKey !== 'sk-f4d34a7f73ce41bda541bbbc12ad3e9f') {
+                    generateImageWithTongyi(prompt, style);
+                } else {
+                    // 未配置API密钥，使用示例图像
+                    imageResult.innerHTML = '<p>API密钥未配置，使用示例图像...</p>';
+                    setTimeout(function() {
+                        fallbackToExampleImage(prompt, style);
+                    }, 1000);
+                }
             });
+            
+            // 添加提示信息
+            const apiKeyWarning = document.createElement('p');
+            apiKeyWarning.className = 'api-warning';
+            apiKeyWarning.style.color = TONGYI_API_CONFIG.apiKey !== 'sk-f4d34a7f73ce41bda541bbbc12ad3e9f' ? 'green' : 'orange';
+            apiKeyWarning.style.fontSize = '12px';
+            apiKeyWarning.style.marginTop = '10px';
+            apiKeyWarning.textContent = TONGYI_API_CONFIG.apiKey !== 'sk-f4d34a7f73ce41bda541bbbc12ad3e9f' ? 
+                '通义万相API已配置' : 
+                '提示：需要在JavaScript代码中配置通义万相API密钥才能使用真实API';
+            
+            // 添加到页面
+            const inputArea = document.querySelector('.input-area');
+            inputArea.appendChild(apiKeyWarning);
         });
         </script>
 
