@@ -6,13 +6,22 @@
     <meta name="description" content="天玑法务是一家致力于利用AI提升法律服务效率和普及度的创新型法律科技公司，为广大人民提供高效、便捷、专业的民事纠纷与诉讼解决方案。">
     <meta property="og:title" content="天玑法务 - 为百姓说法">
     <meta property="og:description" content="AI+律师双重保障，提供高效便捷的法律服务解决方案">
-    <meta property="og:image" content="/assets/images/share-thumbnail.jpg">
+    <meta property="og:image" content="https://tianji-law.com/assets/images/share-thumbnail.jpg">
     <meta name="weixin:title" content="天玑法务 - 为百姓说法">
     <meta name="weixin:description" content="AI+律师双重保障，提供高效便捷的法律服务解决方案">
-    <meta name="weixin:image" content="/assets/images/share-thumbnail.jpg">
+    <meta name="weixin:image" content="https://tianji-law.com/assets/images/share-thumbnail.jpg">
+    <meta itemprop="name" content="天玑法务 - AI法律服务平台">
+    <meta itemprop="description" content="AI+专业律师团队，智能合同生成，法律咨询，一站式解决您的法律需求">
+    <meta itemprop="image" content="https://tianji-law.com/assets/images/share-thumbnail.jpg">
+    <!-- 微信分享相关 -->
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <title>天玑法务 - 为百姓说法</title>
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <!-- 引入微信JS-SDK -->
+    <script src="https://res.wx.qq.com/open/js/jweixin-1.6.0.js"></script>
 </head>
 <body>
     <header class="main-header">
@@ -1328,6 +1337,87 @@
                 const wechatTips = document.querySelector('.wechat-tips');
                 if (wechatTips) {
                     wechatTips.style.display = 'block';
+                }
+                
+                // 配置微信分享信息
+                if (typeof window.WeixinJSBridge !== 'undefined') {
+                    setupWeixinShare();
+                } else {
+                    document.addEventListener('WeixinJSBridgeReady', setupWeixinShare, false);
+                }
+                
+                // 配置微信JS-SDK
+                configWxJsSDK();
+            }
+            
+            // 设置微信分享
+            function setupWeixinShare() {
+                // 微信分享信息
+                const shareData = {
+                    title: '天玑法务 - AI法律服务平台',
+                    desc: 'AI+专业律师团队，智能合同生成，法律咨询，一站式解决您的法律需求',
+                    link: window.location.href,
+                    imgUrl: 'https://tianji-law.com/assets/images/share-thumbnail.jpg'
+                };
+                
+                // 分享给朋友
+                window.WeixinJSBridge.on('menu:share:appmessage', function() {
+                    window.WeixinJSBridge.invoke('sendAppMessage', shareData, function() {});
+                });
+                
+                // 分享到朋友圈
+                window.WeixinJSBridge.on('menu:share:timeline', function() {
+                    window.WeixinJSBridge.invoke('shareTimeline', shareData, function() {});
+                });
+                
+                // 分享到微博
+                window.WeixinJSBridge.on('menu:share:weibo', function() {
+                    window.WeixinJSBridge.invoke('shareWeibo', shareData, function() {});
+                });
+            }
+            
+            // 配置微信JS-SDK
+            function configWxJsSDK() {
+                // 注意：这里需要后端提供接口来生成签名
+                // 以下是模拟的配置，实际应用中需要从服务器获取配置信息
+                if (typeof wx !== 'undefined') {
+                    wx.config({
+                        debug: false,
+                        appId: '', // 需要填写实际的appId
+                        timestamp: Math.floor(new Date().getTime() / 1000),
+                        nonceStr: Math.random().toString(36).substr(2),
+                        signature: '', // 需要填写实际的签名
+                        jsApiList: [
+                            'updateAppMessageShareData',
+                            'updateTimelineShareData',
+                            'onMenuShareTimeline',
+                            'onMenuShareAppMessage',
+                            'onMenuShareQQ',
+                            'onMenuShareQZone'
+                        ]
+                    });
+                    
+                    wx.ready(function() {
+                        const shareData = {
+                            title: '天玑法务 - AI法律服务平台',
+                            desc: 'AI+专业律师团队，智能合同生成，法律咨询，一站式解决您的法律需求',
+                            link: window.location.href,
+                            imgUrl: 'https://tianji-law.com/assets/images/share-thumbnail.jpg',
+                            success: function() {
+                                console.log('分享成功');
+                            }
+                        };
+                        
+                        // 自定义"分享给朋友"及"分享到QQ"按钮的分享内容
+                        wx.updateAppMessageShareData(shareData);
+                        
+                        // 自定义"分享到朋友圈"及"分享到QQ空间"按钮的分享内容
+                        wx.updateTimelineShareData(shareData);
+                    });
+                    
+                    wx.error(function(res) {
+                        console.error('微信JS-SDK配置失败:', res);
+                    });
                 }
             }
             
