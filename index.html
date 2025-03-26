@@ -98,11 +98,10 @@
 
     /* 头部样式 */
     .main-header {
-        background: linear-gradient(135deg, #005bb5, #0d47a1);
+        background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
         color: white;
         padding: var(--spacing-xl) 0;
         text-align: center;
-        box-shadow: var(--shadow-md);
     }
 
     .header-content {
@@ -111,17 +110,14 @@
     }
     
     .main-title {
-        margin-bottom: var(--spacing-md);
-        font-size: 2.8rem;
-        text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-        letter-spacing: 2px;
+        margin-bottom: var(--spacing-sm);
+        font-size: 2.5rem;
+        text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
     }
 
     .slogan {
-        font-size: 1.3rem;
-        opacity: 1;
-        font-weight: 500;
-        letter-spacing: 1px;
+        font-size: 1.2rem;
+        opacity: 0.9;
     }
 
     /* 部分容器样式 */
@@ -132,10 +128,9 @@
 
     .section-title {
         text-align: center;
-        margin-bottom: var(--spacing-xl);
+        margin-bottom: var(--spacing-lg);
         position: relative;
         font-size: 1.8rem;
-        letter-spacing: 1px;
     }
 
     .section-title:after {
@@ -144,7 +139,7 @@
         width: 60px;
         height: 3px;
         background-color: var(--primary-color);
-        margin: var(--spacing-md) auto 0;
+        margin: var(--spacing-sm) auto;
     }
 
     .section-text {
@@ -152,47 +147,6 @@
         max-width: 800px;
         margin: 0 auto var(--spacing-xl);
         color: var(--text-secondary);
-        line-height: 1.8;
-    }
-
-    /* 统一间距 */
-    .features-grid, .process-steps, .contract-types, .service-types {
-        margin: var(--spacing-xl) 0 var(--spacing-xl) * 1.5;
-    }
-
-    .subsection-title {
-        text-align: center;
-        margin: var(--spacing-xl) * 1.5 0 var(--spacing-lg);
-        color: var(--text-primary);
-        font-size: 1.4rem;
-        position: relative;
-        letter-spacing: 0.5px;
-    }
-
-    .subsection-title:after {
-        content: "";
-        display: block;
-        width: 40px;
-        height: 2px;
-        background-color: var(--primary-color);
-        margin: var(--spacing-md) auto 0;
-    }
-
-    /* 统一卡片样式 */
-    .feature-card, .contract-type, .service-type, .contract-download-area, .ai-recommendation, .legal-news, .news-item {
-        padding: var(--spacing-xl);
-        border-radius: var(--radius-md);
-        box-shadow: var(--shadow-sm);
-        transition: var(--transition);
-    }
-
-    /* 按钮统一样式 */
-    .generate-btn, .custom-btn, .cta-button, .view-more-button {
-        padding: var(--spacing-sm) var(--spacing-xl);
-        border-radius: var(--radius-sm);
-        font-weight: 500;
-        letter-spacing: 0.5px;
-        transition: all 0.3s ease;
     }
 
     /* 特性卡片样式 */
@@ -1010,29 +964,43 @@
             <h2 class="section-title">智能合同服务</h2>
             <p class="section-text">根据您的具体需求，我们的AI系统能自动生成专业、合规的合同文本，并有专业律师审核把关。</p>
             
-            <!-- 1. 合同生成流程说明 -->
-            <div class="contract-process">
-                <h3>合同生成流程</h3>
-                <div class="process-steps">
-                    <div class="process-step">
-                        <div class="step-number">1</div>
-                        <p>选择所需合同类型</p>
+            <!-- 1. 合同服务模式 -->
+            <h3 class="subsection-title">我们的服务模式</h3>
+            <div class="service-types">
+                <div class="service-type">
+                    <h3>智能模版合同</h3>
+                    <p>基于AI技术,快速生成标准化合同文本</p>
+                    <div class="service-features">
+                        <div class="feature">
+                            <span class="feature-icon">⚡</span>
+                            <span>快速生成</span>
                     </div>
-                    <div class="process-step">
-                        <div class="step-number">2</div>
-                        <p>填写关键信息</p>
+                        <div class="feature">
+                            <span class="feature-icon">💰</span>
+                            <span>成本低廉</span>
                     </div>
-                    <div class="process-step">
-                        <div class="step-number">3</div>
-                        <p>AI智能生成</p>
+                        <div class="feature">
+                            <span class="feature-icon">📋</span>
+                            <span>标准模版</span>
                     </div>
-                    <div class="process-step">
-                        <div class="step-number">4</div>
-                        <p>律师审核把关</p>
                     </div>
-                    <div class="process-step">
-                        <div class="step-number">5</div>
-                        <p>下载使用</p>
+                    </div>
+                <div class="service-type">
+                    <h3>定制合同服务</h3>
+                    <p>专业律师团队一对一定制专属合同</p>
+                    <div class="service-features">
+                        <div class="feature">
+                            <span class="feature-icon">👨‍⚖️</span>
+                            <span>律师定制</span>
+                        </div>
+                        <div class="feature">
+                            <span class="feature-icon">🎯</span>
+                            <span>精准匹配</span>
+                        </div>
+                        <div class="feature">
+                            <span class="feature-icon">🛡️</span>
+                            <span>法律保障</span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1066,8 +1034,8 @@
                 </div>
             </div>
             
-            <!-- 合同下载区 -->
-            <div class="contract-download-area">
+            <!-- 合同下载区（初始不显示） -->
+            <div class="contract-download-area" style="display: none;">
                 <h3>合同下载区</h3>
                 <p>在这里查看和下载您生成的合同文件</p>
                 <div class="download-list">
@@ -1078,82 +1046,11 @@
                 </div>
             </div>
             
-            <div class="ai-recommendation">
-                <h3>智能合同推荐</h3>
-                <p>不确定需要哪种合同？描述您的困惑，我们的AI将为您推荐最合适的合同模板</p>
-                
-                <div class="chat-container">
-                    <div class="chat-box">
-                        <div class="chat-message ai">
-                            <div class="message-content">
-                                您好！请描述您的情况，我将为您推荐最合适的合同模板。
-                            </div>
-                        </div>
-                        <!-- 这里会动态添加聊天内容 -->
-                    </div>
-                    
-                    <div class="chat-input">
-                        <textarea placeholder="例如：我想和朋友合伙开一家小店，需要什么合同？"></textarea>
-                        <button type="button" class="send-btn">发送</button>
-                    </div>
-                </div>
-                
-                <div class="recommendation-examples">
-                    <h4>常见困惑示例：</h4>
-                    <div class="example-tags">
-                        <span class="example-tag" data-contract-type="房屋租赁合同">我要租房子给别人住</span>
-                        <span class="example-tag" data-contract-type="劳务合同">公司需要招聘员工</span>
-                        <span class="example-tag" data-contract-type="股权合同">我想投资一个创业项目</span>
-                        <span class="example-tag" data-contract-type="合作协议">需要和供应商签订协议</span>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- 3. 定制合同模块 -->
-            <h3 class="subsection-title">我们的服务模式</h3>
-            <div class="service-types">
-                <div class="service-type">
-                    <h3>智能模版合同</h3>
-                    <p>基于AI技术,快速生成标准化合同文本</p>
-                    <div class="service-features">
-                        <div class="feature">
-                            <span class="feature-icon">⚡</span>
-                            <span>快速生成</span>
-                        </div>
-                        <div class="feature">
-                            <span class="feature-icon">💰</span>
-                            <span>成本低廉</span>
-                        </div>
-                        <div class="feature">
-                            <span class="feature-icon">📋</span>
-                            <span>标准模版</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="service-type">
-                    <h3>定制合同服务</h3>
-                    <p>专业律师团队一对一定制专属合同</p>
-                    <div class="service-features">
-                        <div class="feature">
-                            <span class="feature-icon">👨‍⚖️</span>
-                            <span>律师定制</span>
-                        </div>
-                        <div class="feature">
-                            <span class="feature-icon">🎯</span>
-                            <span>精准匹配</span>
-                        </div>
-                        <div class="feature">
-                            <span class="feature-icon">🛡️</span>
-                            <span>法律保障</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
+            <!-- 4. 定制合同模块 -->
             <div class="custom-contract">
-                <h3>定制合同服务</h3>
-                <p>如果预设合同类型无法满足您的需求，可选择我们的定制服务</p>
-                <a href="#" class="custom-btn">定制合同</a>
+                <h3 class="subsection-title">定制合同服务</h3>
+                <p>如果预设合同类型无法满足您的需求，可选择我们的定制服务。专业律师团队将根据您的实际情况，为您提供一对一定制服务，确保合同条款全面保障您的合法权益。</p>
+                <a href="javascript:void(0)" class="custom-btn" onclick="showPhoneDialog()">联系定制合同</a>
             </div>
         </section>
 
@@ -1238,13 +1135,35 @@
         </div>
     </div>
 
+    <!-- 手机号弹窗 -->
+    <div id="phone-dialog" class="contract-dialog">
+        <div class="dialog-content" style="max-width: 400px;">
+            <div class="dialog-header">
+                <h3>联系我们</h3>
+                <span class="close-dialog" onclick="closePhoneDialog()">&times;</span>
+            </div>
+            <div class="dialog-body" style="text-align: center;">
+                <div style="font-size: 1.2rem; margin-bottom: 20px;">
+                    <p>请拨打客服电话进行定制合同咨询</p>
+                    <p style="font-size: 1.5rem; font-weight: bold; color: var(--primary-color); margin: 20px 0;">
+                        <a href="tel:13699817102">13699817102</a>
+                    </p>
+                </div>
+            </div>
+            <div class="dialog-footer">
+                <button class="cancel-btn" onclick="closePhoneDialog()">关闭</button>
+                <button class="generate-contract-btn" onclick="location.href='tel:13699817102'">立即拨打</button>
+            </div>
+        </div>
+    </div>
+
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // 显示下载区域，移除隐藏样式
-            const downloadArea = document.querySelector('.contract-download-area');
-            if (downloadArea) {
-                downloadArea.removeAttribute('style');
-            }
+            // 不再显示下载区域（已经在HTML中设置为不显示）
+            // const downloadArea = document.querySelector('.contract-download-area');
+            // if (downloadArea) {
+            //     downloadArea.removeAttribute('style');
+            // }
             
             // 检测是否在微信浏览器中
             function isWeixinBrowser(){
@@ -1259,6 +1178,24 @@
                     wechatTips.style.display = 'block';
                 }
             }
+            
+            // 显示手机号弹窗
+            window.showPhoneDialog = function() {
+                const phoneDialog = document.getElementById('phone-dialog');
+                if (phoneDialog) {
+                    phoneDialog.style.display = 'block';
+                    document.body.style.overflow = 'hidden'; // 防止背景滚动
+                }
+            };
+            
+            // 关闭手机号弹窗
+            window.closePhoneDialog = function() {
+                const phoneDialog = document.getElementById('phone-dialog');
+                if (phoneDialog) {
+                    phoneDialog.style.display = 'none';
+                    document.body.style.overflow = ''; // 恢复背景滚动
+                }
+            };
             
             const chatBox = document.querySelector('.chat-box');
             const chatInput = document.querySelector('.chat-input textarea');
@@ -1423,310 +1360,12 @@
                 }, 2000);
             });
             
-            // 下载合同函数
-            function downloadContract(contractType, contractId) {
-                // 获取用户输入的表单数据
-                const formData = {};
-                const formFields = document.querySelectorAll('#form-fields input, #form-fields textarea');
-                formFields.forEach(field => {
-                    formData[field.name] = field.value || '___________';
-                });
-                
-                // 创建有实际内容的合同文本（根据用户输入的信息填充）
-                let contractContent = '';
-                
-                if (contractType === '劳务合同') {
-                    contractContent = `
-                    劳务合同
-                    
-                    甲方：${formData.employer || '___________'}
-                    乙方：${formData.employee || '___________'}
-                    
-                    一、合同期限
-                    本合同期限为${formData.duration || '___'}个月，自_____年_____月_____日起至_____年_____月_____日止。
-                    
-                    二、工作内容
-                    乙方的工作岗位（职务）为${formData.position || '___________'}。
-                    
-                    三、工作时间和休息休假
-                    1. 甲方安排乙方执行标准工时制，即每日工作8小时，每周工作40小时，每周休息日为周六、周日。
-                    2. 乙方依法享有法定节假日、年休假、婚假、丧假、产假等假期。
-                    
-                    四、劳动报酬
-                    1. 甲方每月5日前以货币形式支付乙方工资。
-                    2. 乙方工资为${formData.salary || '___________'}元/月。
-                    
-                    五、社会保险和福利
-                    甲方依法为乙方缴纳社会保险，包括养老保险、医疗保险、失业保险、工伤保险和生育保险。
-                    
-                    六、劳动纪律
-                    乙方应遵守甲方依法制定的各项规章制度，服从管理，按时完成工作任务。
-                    
-                    七、合同的变更、解除和终止
-                    本合同的变更、解除和终止，按照《中华人民共和国劳动合同法》的有关规定执行。
-                    
-                    八、其他约定事项
-                    ${formData.requirements || '无特殊约定'}
-                    
-                    九、劳动争议处理
-                    双方发生劳动争议，可以协商解决，也可以向劳动争议调解委员会申请调解，调解不成的，可以向劳动争议仲裁委员会申请仲裁。
-                    
-                    十、本合同一式两份，甲乙双方各执一份。
-                    
-                    甲方（盖章）：${formData.employer || '___________'}               乙方（签字）：${formData.employee || '___________'}
-                    法定代表人（委托代理人）：
-                    _____年_____月_____日             _____年_____月_____日
-                    `;
-                } else if (contractType === '股权合同') {
-                    contractContent = `
-                    股权投资协议
-                    
-                    甲方（投资方）：${formData.investor || '___________'}
-                    乙方（目标公司）：${formData.company || '___________'}
-                    
-                    一、投资金额与股权比例
-                    1. 甲方同意向乙方投资人民币${formData.amount || '___________'}元。
-                    2. 本次投资完成后，甲方持有乙方${formData.percentage || '___'}%的股权。
-                    
-                    二、资金用途
-                    本次投资的资金主要用于公司业务发展与运营。
-                    
-                    三、公司治理
-                    1. 本次投资完成后，乙方董事会由3名董事组成，其中甲方有权提名1名董事。
-                    2. 以下重大事项需经代表2/3以上表决权的股东同意：
-                       a) 修改公司章程；
-                       b) 增加或减少注册资本；
-                       c) 公司合并、分立、解散或变更公司形式；
-                       d) 其他公司章程规定的事项。
-                    
-                    四、投资者权利
-                    1. 优先认购权：乙方新增注册资本时，甲方有权优先按持股比例认购新增注册资本。
-                    2. 优先购买权：乙方其他股东转让股权时，甲方有权优先购买。
-                    3. 共同出售权：乙方控股股东转让股权时，甲方有权按相同条件共同出售其持有的股权。
-                    
-                    五、退出机制
-                    1. 甲方可通过以下方式退出投资：
-                       a) IPO；
-                       b) 股权转让；
-                       c) 股权回购；
-                       d) 其他双方协商一致的方式。
-                    
-                    六、特殊约定
-                    ${formData.requirements || '无特殊约定'}
-                    
-                    七、违约责任
-                    任何一方违反本协议约定，应当赔偿守约方因此遭受的损失。
-                    
-                    八、争议解决
-                    因本协议引起的争议，双方应友好协商解决，协商不成的，提交深圳仲裁委员会仲裁。
-                    
-                    九、其他事项
-                    1. 本协议自双方签字盖章之日起生效。
-                    2. 本协议一式两份，双方各执一份，具有同等法律效力。
-                    
-                    甲方（盖章）：${formData.investor || '___________'}              乙方（盖章）：${formData.company || '___________'}
-                    法定代表人（签字）：              法定代表人（签字）：
-                    
-                    _____年_____月_____日             _____年_____月_____日
-                    `;
-                } else if (contractType === '房屋租赁合同') {
-                    contractContent = `
-                    房屋租赁合同
-                    
-                    出租方（甲方）：${formData.landlord || '___________'}
-                    承租方（乙方）：${formData.tenant || '___________'}
-                    
-                    根据《中华人民共和国合同法》及有关法律、法规的规定，甲乙双方在平等、自愿的基础上，就房屋租赁的有关事宜达成协议如下：
-                    
-                    一、房屋基本情况
-                    房屋坐落于${formData.address || '___________'}，建筑面积_____平方米，用途为居住。
-                    
-                    二、租赁期限
-                    租赁期共${formData.duration || '___'}个月，自_____年_____月_____日起至_____年_____月_____日止。
-                    
-                    三、租金及支付方式
-                    1. 月租金为人民币${formData.rent || '___________'}元整。
-                    2. 支付方式：月付。
-                    3. 乙方应于每月的第5日前向甲方支付租金。
-                    
-                    四、押金
-                    乙方应于签订本合同时向甲方支付押金人民币${formData.rent ? formData.rent * 2 : '___________'}元整。本合同终止时，如乙方无违约行为，且已结清各项费用，甲方应将押金全额退还给乙方，不计利息。
-                    
-                    五、房屋交付及返还
-                    1. 甲方应于_____年_____月_____日前将房屋交付给乙方使用。
-                    2. 租赁期满或合同解除后，乙方应于7日内将房屋恢复原状返还给甲方。
-                    
-                    六、房屋维护及维修
-                    1. 在租赁期内，甲方负责房屋主体结构的维修。
-                    2. 因使用不当造成房屋及其附属设施的损坏，乙方应负责维修或赔偿。
-                    
-                    七、转租
-                    未经甲方书面同意，乙方不得将承租房屋转租给第三方。
-                    
-                    八、特殊约定
-                    ${formData.requirements || '无特殊约定'}
-                    
-                    九、合同解除
-                    符合下列条件之一的，本合同即行解除：
-                    1. 因不可抗力致使合同无法继续履行的；
-                    2. 甲方未按约定时间交付房屋满30日的；
-                    3. 乙方拖欠租金满30日的；
-                    
-                    十、违约责任
-                    1. 甲方违约，应按月租金的2倍向乙方支付违约金。
-                    2. 乙方违约，应按月租金的2倍向甲方支付违约金。
-                    
-                    十一、争议解决方式
-                    本合同执行过程中如发生争议，双方应协商解决，协商不成的，可向房屋所在地人民法院起诉。
-                    
-                    十二、本合同一式两份，甲乙双方各执一份，具有同等法律效力。
-                    
-                    甲方（签字）：${formData.landlord || '___________'}             乙方（签字）：${formData.tenant || '___________'}
-                    联系电话：                        联系电话：
-                    
-                    _____年_____月_____日             _____年_____月_____日
-                    `;
-                } else if (contractType === '合作协议') {
-                    contractContent = `
-                    合作协议
-                    
-                    甲方：${formData.partyA || '___________'}
-                    乙方：${formData.partyB || '___________'}
-                    
-                    甲乙双方本着平等互利、优势互补、共同发展的原则，经友好协商，就合作事宜达成如下协议：
-                    
-                    一、合作项目
-                    合作项目名称：${formData.project || '___________'}
-                    
-                    二、合作期限
-                    合作期限为${formData.duration || '___'}个月，自_____年_____月_____日起至_____年_____月_____日止。
-                    
-                    三、合作方式
-                    1. 甲方负责：项目规划、资金支持、市场拓展等
-                    2. 乙方负责：技术开发、产品实现、质量保障等
-                    3. 双方共同负责：项目推广、客户服务、风险管控等
-                    
-                    四、权利与义务
-                    1. 甲方权利义务：
-                       a) 按时支付相关费用
-                       b) 提供必要的资源和支持
-                    
-                    2. 乙方权利义务：
-                       a) 保证服务和产品质量
-                       b) 遵守相关法律法规
-                    
-                    五、费用分担与收益分配
-                    1. 费用分担：
-                       a) 甲方承担：项目投资、运营成本等
-                       b) 乙方承担：技术开发、人员成本等
-                    
-                    2. 收益分配：
-                       a) 甲方获得收益的60% 
-                       b) 乙方获得收益的40% 
-                    
-                    六、特殊约定
-                    ${formData.requirements || '无特殊约定'}
-                    
-                    七、保密条款
-                    合作期间，双方应对从对方获取的商业秘密、技术信息等保密信息严格保密，未经对方书面同意，不得向第三方披露。本保密义务不因本协议的终止而终止。
-                    
-                    八、合作变更与终止
-                    1. 本协议履行过程中，如需变更或终止，应经双方协商一致并签订书面协议。
-                    2. 如一方严重违反本协议，导致协议目的无法实现，另一方有权终止协议并要求赔偿损失。
-                    
-                    九、违约责任
-                    任何一方违反本协议约定，应当赔偿守约方因此遭受的损失。
-                    
-                    十、争议解决
-                    因本协议引起的争议，双方应友好协商解决，协商不成的，提交深圳仲裁委员会仲裁。
-                    
-                    十一、其他事项
-                    1. 本协议未尽事宜，双方可另行协商并签订补充协议，补充协议与本协议具有同等法律效力。
-                    2. 本协议自双方签字盖章之日起生效。
-                    3. 本协议一式两份，双方各执一份，具有同等法律效力。
-                    
-                    甲方（盖章）：${formData.partyA || '___________'}              乙方（盖章）：${formData.partyB || '___________'}
-                    法定代表人（签字）：              法定代表人（签字）：
-                    
-                    _____年_____月_____日             _____年_____月_____日
-                    `;
-                } else {
-                    contractContent = `
-                    通用合同模板
-                    
-                    甲方：___________
-                    乙方：___________
-                    
-                    一、合同内容
-                    _____________________
-                    
-                    二、合同期限
-                    _____________________
-                    
-                    三、权利与义务
-                    _____________________
-                    
-                    四、其他约定事项
-                    _____________________
-                    
-                    五、争议解决
-                    _____________________
-                    
-                    甲方（签字）：                    乙方（签字）：
-                    
-                    _____年_____月_____日             _____年_____月_____日
-                    `;
-                }
-                
-                // 创建Blob对象
-                // 注意：这里我们只能生成文本文件，实际Word文档(.docx)需要服务器端处理
-                // 但我们可以使用.doc扩展名，让用户在Word中打开
-                const blob = new Blob([contractContent], {type: 'application/msword'});
-                
-                // 创建下载链接
-                const url = URL.createObjectURL(blob);
-                const a = document.createElement('a');
-                
-                // 设置文件名
-                const now = new Date();
-                const dateStr = now.getFullYear() + '-' + 
-                              String(now.getMonth() + 1).padStart(2, '0') + '-' + 
-                              String(now.getDate()).padStart(2, '0');
-                
-                a.href = url;
-                a.download = `${contractType}_${dateStr}.doc`;
-                
-                // 触发下载
-                document.body.appendChild(a);
-                a.click();
-                
-                // 清理
-                document.body.removeChild(a);
-                URL.revokeObjectURL(url);
-                
-                // 更新下载按钮文本
-                const downloadButton = document.querySelector(`#${contractId} .download-button`);
-                if (downloadButton) {
-                    downloadButton.textContent = '已下载';
-                    downloadButton.style.backgroundColor = '#9e9e9e';
-                    
-                    // 5秒后恢复按钮状态
-                    setTimeout(() => {
-                        downloadButton.textContent = '下载';
-                        downloadButton.style.backgroundColor = '';
-                    }, 5000);
-                }
-            }
-            
             // 生成合同并添加到下载区域
             function generateContract(contractType) {
-                // 获取表单数据（如果有）
-                const formData = {};
-                if (contractDialog.style.display === 'block') {
-                    const formFields = document.querySelectorAll('#form-fields input, #form-fields textarea');
-                    formFields.forEach(field => {
-                        formData[field.name] = field.value;
-                    });
+                // 显示合同下载区域
+                const downloadArea = document.querySelector('.contract-download-area');
+                if (downloadArea) {
+                    downloadArea.style.display = 'block';
                 }
                 
                 // 移除空提示
@@ -1749,47 +1388,312 @@
                 downloadItem.className = 'download-item';
                 downloadItem.id = contractId;
                 
-                // 创建合同名称（包含一些用户数据，使其更具辨识度）
-                let contractName = `${contractType}_${dateStr}`;
-                
-                // 根据合同类型添加更多标识信息
-                if (contractType === '劳务合同' && formData.employee) {
-                    contractName = `劳务合同_${formData.employee}_${dateStr}`;
-                } else if (contractType === '股权合同' && formData.company) {
-                    contractName = `股权合同_${formData.company}_${dateStr}`;
-                } else if (contractType === '房屋租赁合同' && formData.tenant) {
-                    contractName = `房屋租赁合同_${formData.tenant}_${dateStr}`;
-                } else if (contractType === '合作协议' && formData.project) {
-                    contractName = `合作协议_${formData.project}_${dateStr}`;
-                }
-                
                 // 设置下载项内容
                 downloadItem.innerHTML = `
                     <div class="download-icon">📄</div>
                     <div class="download-info">
-                        <div class="download-name">${contractName}.doc</div>
-                        <div class="download-meta">生成时间: ${dateStr} | 格式: Word文档</div>
-                    </div>
+                        <div class="download-name">${contractType}_${dateStr}.txt</div>
+                        <div class="download-meta">生成时间: ${dateStr} | 大小: 约256KB</div>
+        </div>
                     <button class="download-button" data-contract-type="${contractType}" data-contract-id="${contractId}">下载</button>
                 `;
                 
                 // 添加到下载列表
                 downloadList.appendChild(downloadItem);
                 
-                // 为下载按钮添加事件监听，并传递表单数据
+                // 为下载按钮添加事件监听
                 const downloadButton = downloadItem.querySelector('.download-button');
                 downloadButton.addEventListener('click', function() {
-                    // 保存当前的表单数据到按钮上
-                    if (Object.keys(formData).length > 0) {
-                        Object.entries(formData).forEach(([key, value]) => {
-                            this.setAttribute(`data-${key}`, value);
-                        });
-                    }
                     downloadContract(this.getAttribute('data-contract-type'), this.getAttribute('data-contract-id'));
                 });
                 
                 // 显示成功消息
                 alert(`${contractType}已生成成功，请查看下载区域`);
+            }
+            
+            // 下载合同函数
+            function downloadContract(contractType, contractId) {
+                // 获取合同模板内容（实际应用中应该是从服务器获取）
+                const content = contractTemplates[contractType] || '默认合同内容';
+                
+                // 创建有实际内容的合同文本
+                let contractContent = '';
+                
+                if (contractType === '劳务合同') {
+                    contractContent = `
+                    劳务合同
+                    
+                    甲方：__________________
+                    乙方：__________________
+                    
+                    一、合同期限
+                    本合同期限为_____年，自_____年_____月_____日起至_____年_____月_____日止。
+                    
+                    二、工作内容
+                    乙方的工作岗位（职务）为__________。
+                    
+                    三、工作时间和休息休假
+                    1. 甲方安排乙方执行标准工时制，即每日工作8小时，每周工作40小时，每周休息日为_____。
+                    2. 乙方依法享有法定节假日、年休假、婚假、丧假、产假等假期。
+                    
+                    四、劳动报酬
+                    1. 甲方每月_____日以货币形式支付乙方工资。
+                    2. 乙方试用期工资为_____元/月，试用期满后工资为_____元/月。
+                    
+                    五、社会保险和福利
+                    甲方依法为乙方缴纳社会保险，包括养老保险、医疗保险、失业保险、工伤保险和生育保险。
+                    
+                    六、劳动纪律
+                    乙方应遵守甲方依法制定的各项规章制度，服从管理，按时完成工作任务。
+                    
+                    七、合同的变更、解除和终止
+                    本合同的变更、解除和终止，按照《中华人民共和国劳动合同法》的有关规定执行。
+                    
+                    八、其他约定事项
+                    ________________________
+                    
+                    九、劳动争议处理
+                    双方发生劳动争议，可以协商解决，也可以向劳动争议调解委员会申请调解，调解不成的，可以向劳动争议仲裁委员会申请仲裁。
+                    
+                    十、本合同一式两份，甲乙双方各执一份。
+                    
+                    甲方（盖章）：                    乙方（签字）：
+                    法定代表人（委托代理人）：
+                    _____年_____月_____日             _____年_____月_____日
+                    `;
+                } else if (contractType === '股权合同') {
+                    contractContent = `
+                    股权投资协议
+                    
+                    甲方（投资方）：__________________
+                    乙方（目标公司）：__________________
+                    
+                    一、投资金额与股权比例
+                    1. 甲方同意向乙方投资人民币_____万元。
+                    2. 本次投资完成后，甲方持有乙方_____% 的股权。
+                    
+                    二、资金用途
+                    本次投资的资金主要用于_____________________。
+                    
+                    三、公司治理
+                    1. 本次投资完成后，乙方董事会由_____名董事组成，其中甲方有权提名_____名董事。
+                    2. 以下重大事项需经代表_____% 以上表决权的股东同意：
+                       a) 修改公司章程；
+                       b) 增加或减少注册资本；
+                       c) 公司合并、分立、解散或变更公司形式；
+                       d) _____________________。
+                    
+                    四、投资者权利
+                    1. 优先认购权：乙方新增注册资本时，甲方有权优先按持股比例认购新增注册资本。
+                    2. 优先购买权：乙方其他股东转让股权时，甲方有权优先购买。
+                    3. 共同出售权：乙方控股股东转让股权时，甲方有权按相同条件共同出售其持有的股权。
+                    
+                    五、退出机制
+                    1. 甲方可通过以下方式退出投资：
+                       a) IPO；
+                       b) 股权转让；
+                       c) 股权回购；
+                       d) _____________________。
+                    
+                    六、违约责任
+                    任何一方违反本协议约定，应当赔偿守约方因此遭受的损失。
+                    
+                    七、争议解决
+                    因本协议引起的争议，双方应友好协商解决，协商不成的，提交_____仲裁委员会仲裁。
+                    
+                    八、其他事项
+                    1. 本协议自双方签字盖章之日起生效。
+                    2. 本协议一式_____份，双方各执_____份，具有同等法律效力。
+                    
+                    甲方（盖章）：                    乙方（盖章）：
+                    法定代表人（签字）：              法定代表人（签字）：
+                    
+                    _____年_____月_____日             _____年_____月_____日
+                    `;
+                } else if (contractType === '房屋租赁合同') {
+                    contractContent = `
+                    房屋租赁合同
+                    
+                    出租方（甲方）：__________________
+                    承租方（乙方）：__________________
+                    
+                    根据《中华人民共和国合同法》及有关法律、法规的规定，甲乙双方在平等、自愿的基础上，就房屋租赁的有关事宜达成协议如下：
+                    
+                    一、房屋基本情况
+                    房屋坐落于_____________________，建筑面积_____平方米，用途为_____。
+                    
+                    二、租赁期限
+                    租赁期共_____个月，自_____年_____月_____日起至_____年_____月_____日止。
+                    
+                    三、租金及支付方式
+                    1. 月租金为人民币_____元整。
+                    2. 支付方式：_____（月付/季付/半年付/年付）。
+                    3. 乙方应于每_____（月/季/半年/年）的第_____日前向甲方支付租金。
+                    
+                    四、押金
+                    乙方应于签订本合同时向甲方支付押金人民币_____元整。本合同终止时，如乙方无违约行为，且已结清各项费用，甲方应将押金全额退还给乙方，不计利息。
+                    
+                    五、房屋交付及返还
+                    1. 甲方应于_____年_____月_____日前将房屋交付给乙方使用。
+                    2. 租赁期满或合同解除后，乙方应于_____日内将房屋恢复原状返还给甲方。
+                    
+                    六、房屋维护及维修
+                    1. 在租赁期内，甲方负责房屋主体结构的维修。
+                    2. 因使用不当造成房屋及其附属设施的损坏，乙方应负责维修或赔偿。
+                    
+                    七、转租
+                    未经甲方书面同意，乙方不得将承租房屋转租给第三方。
+                    
+                    八、合同解除
+                    符合下列条件之一的，本合同即行解除：
+                    1. 因不可抗力致使合同无法继续履行的；
+                    2. 甲方未按约定时间交付房屋满_____日的；
+                    3. 乙方拖欠租金满_____日的；
+                    4. _____________________。
+                    
+                    九、违约责任
+                    1. 甲方违约，应按月租金的_____倍向乙方支付违约金。
+                    2. 乙方违约，应按月租金的_____倍向甲方支付违约金。
+                    
+                    十、争议解决方式
+                    本合同执行过程中如发生争议，双方应协商解决，协商不成的，可向房屋所在地人民法院起诉。
+                    
+                    十一、其他约定事项
+                    _____________________
+                    
+                    十二、本合同一式两份，甲乙双方各执一份，具有同等法律效力。
+                    
+                    甲方（签字）：                    乙方（签字）：
+                    联系电话：                        联系电话：
+                    
+                    _____年_____月_____日             _____年_____月_____日
+                    `;
+                } else if (contractType === '合作协议') {
+                    contractContent = `
+                    合作协议
+                    
+                    甲方：__________________
+                    乙方：__________________
+                    
+                    甲乙双方本着平等互利、优势互补、共同发展的原则，经友好协商，就合作事宜达成如下协议：
+                    
+                    一、合作项目
+                    合作项目名称：_____________________
+                    合作内容：_____________________
+                    
+                    二、合作期限
+                    合作期限为_____年，自_____年_____月_____日起至_____年_____月_____日止。
+                    
+                    三、合作方式
+                    1. 甲方负责：_____________________
+                    2. 乙方负责：_____________________
+                    3. 双方共同负责：_____________________
+                    
+                    四、权利与义务
+                    1. 甲方权利义务：
+                       a) _____________________
+                       b) _____________________
+                    
+                    2. 乙方权利义务：
+                       a) _____________________
+                       b) _____________________
+                    
+                    五、费用分担与收益分配
+                    1. 费用分担：
+                       a) 甲方承担：_____________________
+                       b) 乙方承担：_____________________
+                    
+                    2. 收益分配：
+                       a) 甲方获得收益的_____% 
+                       b) 乙方获得收益的_____% 
+                    
+                    六、保密条款
+                    合作期间，双方应对从对方获取的商业秘密、技术信息等保密信息严格保密，未经对方书面同意，不得向第三方披露。本保密义务不因本协议的终止而终止。
+                    
+                    七、合作变更与终止
+                    1. 本协议履行过程中，如需变更或终止，应经双方协商一致并签订书面协议。
+                    2. 如一方严重违反本协议，导致协议目的无法实现，另一方有权终止协议并要求赔偿损失。
+                    
+                    八、违约责任
+                    任何一方违反本协议约定，应当赔偿守约方因此遭受的损失。
+                    
+                    九、争议解决
+                    因本协议引起的争议，双方应友好协商解决，协商不成的，提交_____仲裁委员会仲裁。
+                    
+                    十、其他事项
+                    1. 本协议未尽事宜，双方可另行协商并签订补充协议，补充协议与本协议具有同等法律效力。
+                    2. 本协议自双方签字盖章之日起生效。
+                    3. 本协议一式_____份，双方各执_____份，具有同等法律效力。
+                    
+                    甲方（盖章）：                    乙方（盖章）：
+                    法定代表人（签字）：              法定代表人（签字）：
+                    
+                    _____年_____月_____日             _____年_____月_____日
+                    `;
+                } else {
+                    contractContent = `
+                    通用合同模板
+                    
+                    甲方：__________________
+                    乙方：__________________
+                    
+                    一、合同内容
+                    _____________________
+                    
+                    二、合同期限
+                    _____________________
+                    
+                    三、权利与义务
+                    _____________________
+                    
+                    四、其他约定事项
+                    _____________________
+                    
+                    五、争议解决
+                    _____________________
+                    
+                    甲方（签字）：                    乙方（签字）：
+                    
+                    _____年_____月_____日             _____年_____月_____日
+                    `;
+                }
+                
+                // 创建Blob对象 - 使用纯文本格式，确保下载的内容不为空
+                const blob = new Blob([contractContent], {type: 'text/plain'});
+                
+                // 创建下载链接
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                
+                // 设置文件名
+                const now = new Date();
+                const dateStr = now.getFullYear() + '-' + 
+                              String(now.getMonth() + 1).padStart(2, '0') + '-' + 
+                              String(now.getDate()).padStart(2, '0');
+                
+                a.href = url;
+                a.download = `${contractType}_${dateStr}.txt`;
+                
+                // 触发下载
+                document.body.appendChild(a);
+                a.click();
+                
+                // 清理
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+                
+                // 更新下载按钮文本
+                const downloadButton = document.querySelector(`#${contractId} .download-button`);
+                if (downloadButton) {
+                    downloadButton.textContent = '已下载';
+                    downloadButton.style.backgroundColor = '#9e9e9e';
+                    
+                    // 5秒后恢复按钮状态
+                    setTimeout(() => {
+                        downloadButton.textContent = '下载';
+                        downloadButton.style.backgroundColor = '';
+                    }, 5000);
+                }
             }
             
             // 发送消息函数
