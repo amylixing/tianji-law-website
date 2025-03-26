@@ -22,6 +22,15 @@
         </div>
     </header>
 
+    <div class="nav-container">
+        <nav class="main-nav">
+            <a href="#service-process" class="nav-item">服务流程</a>
+            <a href="#advantages-section" class="nav-item">核心优势</a>
+            <a href="#services-section" class="nav-item">服务内容</a>
+            <a href="#contract-generator" class="nav-item">合同生成</a>
+        </nav>
+    </div>
+
     <style>
     /* 全局变量 */
     :root {
@@ -118,6 +127,73 @@
     .slogan {
         font-size: 1.2rem;
         opacity: 0.9;
+    }
+
+    /* 导航栏样式 */
+    .nav-container {
+        background-color: white;
+        box-shadow: var(--shadow-sm);
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+    }
+
+    .main-nav {
+        display: flex;
+        justify-content: center;
+        padding: var(--spacing-md) 0;
+        max-width: 1200px;
+        margin: 0 auto;
+        flex-wrap: wrap;
+    }
+
+    .nav-item {
+        margin: 0 var(--spacing-lg);
+        font-weight: 500;
+        color: var(--text-primary);
+        position: relative;
+        text-decoration: none;
+        padding: var(--spacing-xs) 0;
+    }
+
+    .nav-item:after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background-color: var(--primary-color);
+        transition: var(--transition);
+    }
+
+    .nav-item:hover {
+        color: var(--primary-color);
+    }
+
+    .nav-item:hover:after {
+        width: 100%;
+    }
+    
+    .nav-item.active {
+        color: var(--primary-color);
+    }
+    
+    .nav-item.active:after {
+        width: 100%;
+    }
+
+    @media (max-width: 768px) {
+        .main-nav {
+            flex-direction: row;
+            justify-content: center;
+            padding: var(--spacing-sm) 0;
+        }
+        
+        .nav-item {
+            margin: var(--spacing-xs) var(--spacing-sm);
+            font-size: 0.9rem;
+        }
     }
 
     /* 部分容器样式 */
@@ -886,7 +962,7 @@
     </style>
 
     <div class="container">
-        <section class="intro-section">
+        <section class="intro-section" id="intro-section">
             <h2 class="section-title">公司简介</h2>
             <p class="section-text">天玑法务是一家致力于利用人工智能技术提升法律服务效率和普及度的创新型法律科技公司。我们秉承"科技助力法治，AI普惠民生"的理念，致力于为广大人民提供高效、便捷、专业的民事纠纷与诉讼解决方案。</p>
         </section>
@@ -914,7 +990,7 @@
             </div>
         </section>
 
-        <section class="service-process">
+        <section class="service-process" id="service-process">
             <h2 class="section-title">服务流程</h2>
             <div class="process-steps">
                 <div class="process-step">
@@ -940,7 +1016,7 @@
             </div>
         </section>
 
-        <section class="advantages-section">
+        <section class="advantages-section" id="advantages-section">
             <h2 class="section-title">核心优势</h2>
             <ul class="advantages-list">
                 <li><strong>AI+律师，双重保障：</strong>自主研发的AI法律咨询系统与专业律师团队结合，确保用户权益得到最大程度保障。</li>
@@ -1161,6 +1237,47 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
+            // 平滑滚动到对应部分
+            document.querySelectorAll('.nav-item').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 70, // 70px的偏移量，避免导航栏遮挡内容
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+            
+            // 高亮当前浏览的部分
+            window.addEventListener('scroll', function() {
+                const sections = document.querySelectorAll('section[id]');
+                const navItems = document.querySelectorAll('.nav-item');
+                
+                let currentSection = '';
+                
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.clientHeight;
+                    
+                    if (window.pageYOffset >= sectionTop - 100) {
+                        currentSection = '#' + section.getAttribute('id');
+                    }
+                });
+                
+                navItems.forEach(item => {
+                    item.classList.remove('active');
+                    if (item.getAttribute('href') === currentSection) {
+                        item.classList.add('active');
+                    }
+                });
+            });
+            
             // 不再显示下载区域（已经在HTML中设置为不显示）
             // const downloadArea = document.querySelector('.contract-download-area');
             // if (downloadArea) {
