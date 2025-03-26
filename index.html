@@ -106,6 +106,197 @@
             </ul>
         </section>
 
+        <section class="text-to-image-section">
+            <h2 class="section-title">文生图功能</h2>
+            <p class="section-text">我们的AI文生图技术基于通义万相API，可以帮助您将复杂的法律概念转化为直观易懂的图示，助您更好地理解法律问题。</p>
+            
+            <div class="text-to-image-demo">
+                <div class="input-area">
+                    <h3>输入您的法律问题</h3>
+                    <textarea id="legal-text-input" placeholder="例如：我想了解房屋买卖合同中的违约责任..."></textarea>
+                    <div class="style-options">
+                        <label for="style-select">图像风格：</label>
+                        <select id="style-select">
+                            <option value="realistic">真实写实</option>
+                            <option value="cartoon" selected>卡通插画</option>
+                            <option value="flow-chart">流程图</option>
+                            <option value="infographic">信息图表</option>
+                        </select>
+                    </div>
+                    <button id="generate-image-btn" class="cta-button">生成图示</button>
+                </div>
+                <div class="output-area">
+                    <h3>生成的图示</h3>
+                    <div id="image-result">
+                        <p class="placeholder-text">图示将显示在这里</p>
+                        <!-- 生成的图像将通过JavaScript插入到这里 -->
+                    </div>
+                </div>
+            </div>
+            
+            <div class="examples-gallery">
+                <h3>通义万相生成示例</h3>
+                <div class="example-images">
+                    <div class="example-item">
+                        <img src="assets/images/example-diagram-1.jpg" alt="房产交易流程图示">
+                        <p>房产交易流程图示</p>
+                    </div>
+                    <div class="example-item">
+                        <img src="assets/images/example-diagram-2.jpg" alt="离婚财产分割图示">
+                        <p>离婚财产分割图示</p>
+                    </div>
+                    <div class="example-item">
+                        <img src="assets/images/example-diagram-3.jpg" alt="劳动争议解决途径图示">
+                        <p>劳动争议解决途径图示</p>
+                    </div>
+                </div>
+                <p class="api-credit">图像由通义万相API提供技术支持</p>
+            </div>
+        </section>
+
+        <style>
+        .text-to-image-section {
+            padding: 40px 0;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            margin: 30px 0;
+        }
+        
+        .text-to-image-demo {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .input-area, .output-area {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        #legal-text-input {
+            width: 100%;
+            height: 150px;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            margin-bottom: 15px;
+            font-family: inherit;
+            resize: vertical;
+        }
+        
+        .style-options {
+            margin-bottom: 15px;
+        }
+        
+        #style-select {
+            padding: 8px;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+        }
+        
+        #image-result {
+            width: 100%;
+            height: 200px;
+            border: 1px dashed #ccc;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #fff;
+        }
+        
+        .placeholder-text {
+            color: #999;
+            text-align: center;
+        }
+        
+        .examples-gallery {
+            margin-top: 40px;
+        }
+        
+        .example-images {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .example-item {
+            flex: 1;
+            min-width: 200px;
+            max-width: 300px;
+            text-align: center;
+        }
+        
+        .example-item img {
+            width: 100%;
+            height: auto;
+            border-radius: 6px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        
+        .example-item p {
+            margin-top: 10px;
+            font-size: 14px;
+        }
+        
+        .api-credit {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 12px;
+            color: #666;
+        }
+        
+        @media (max-width: 768px) {
+            .text-to-image-demo {
+                flex-direction: column;
+            }
+        }
+        </style>
+
+        <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const generateBtn = document.getElementById('generate-image-btn');
+            const textInput = document.getElementById('legal-text-input');
+            const styleSelect = document.getElementById('style-select');
+            const imageResult = document.getElementById('image-result');
+            
+            generateBtn.addEventListener('click', function() {
+                // 显示加载状态
+                imageResult.innerHTML = '<p>正在通过通义万相生成图示，请稍候...</p>';
+                
+                // 获取选择的风格
+                const selectedStyle = styleSelect.value;
+                
+                // 这里应该是实际的通义万相API调用逻辑
+                // 为了演示，我们使用setTimeout模拟API调用延迟
+                setTimeout(function() {
+                    // 示例：根据输入内容的不同，显示不同的示例图
+                    const input = textInput.value.toLowerCase();
+                    let imagePath = '';
+                    
+                    if(input.includes('房') || input.includes('买卖') || input.includes('合同')) {
+                        imagePath = 'assets/images/example-diagram-1.jpg';
+                    } else if(input.includes('离婚') || input.includes('财产')) {
+                        imagePath = 'assets/images/example-diagram-2.jpg';
+                    } else if(input.includes('劳动') || input.includes('争议')) {
+                        imagePath = 'assets/images/example-diagram-3.jpg';
+                    } else {
+                        // 默认图像
+                        imagePath = 'assets/images/default-diagram.jpg';
+                    }
+                    
+                    // 显示生成的图像
+                    imageResult.innerHTML = `
+                        <img src="${imagePath}" alt="通义万相生成的法律图示" style="max-width:100%; max-height:200px;">
+                        <p style="font-size: 12px; margin-top: 10px; text-align: center;">通义万相生成的${styleSelect.options[styleSelect.selectedIndex].text}风格图示</p>
+                    `;
+                }, 1500);
+            });
+        });
+        </script>
+
         <section class="contact-section">
             <!-- 在联系我们部分之前添加法务热点板块 -->
             <section class="legal-news">
