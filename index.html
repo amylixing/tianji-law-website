@@ -1979,39 +1979,39 @@
                     
                     // 创建Blob对象 - 使用纯文本格式
                     const blob = new Blob([contractContent], {type: 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'});
+                
+                // 创建下载链接
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                
+                // 设置文件名
+                const now = new Date();
+                const dateStr = now.getFullYear() + '-' + 
+                              String(now.getMonth() + 1).padStart(2, '0') + '-' + 
+                              String(now.getDate()).padStart(2, '0');
+                
+                a.href = url;
+                a.download = `${contractType}_${dateStr}.docx`;
+                
+                // 触发下载
+                document.body.appendChild(a);
+                a.click();
+                
+                // 清理
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+                
+                // 更新下载按钮文本
+                const downloadButton = document.querySelector(`#${contractId} .download-button`);
+                if (downloadButton) {
+                    downloadButton.textContent = '已下载';
+                    downloadButton.style.backgroundColor = '#9e9e9e';
                     
-                    // 创建下载链接
-                    const url = URL.createObjectURL(blob);
-                    const a = document.createElement('a');
-                    
-                    // 设置文件名
-                    const now = new Date();
-                    const dateStr = now.getFullYear() + '-' + 
-                                  String(now.getMonth() + 1).padStart(2, '0') + '-' + 
-                                  String(now.getDate()).padStart(2, '0');
-                    
-                    a.href = url;
-                    a.download = `${contractType}_${dateStr}.docx`;
-                    
-                    // 触发下载
-                    document.body.appendChild(a);
-                    a.click();
-                    
-                    // 清理
-                    document.body.removeChild(a);
-                    URL.revokeObjectURL(url);
-                    
-                    // 更新下载按钮文本
-                    const downloadButton = document.querySelector(`#${contractId} .download-button`);
-                    if (downloadButton) {
-                        downloadButton.textContent = '已下载';
-                        downloadButton.style.backgroundColor = '#9e9e9e';
-                        
-                        // 5秒后恢复按钮状态
-                        setTimeout(() => {
-                            downloadButton.textContent = '下载';
-                            downloadButton.style.backgroundColor = '';
-                        }, 5000);
+                    // 5秒后恢复按钮状态
+                    setTimeout(() => {
+                        downloadButton.textContent = '下载';
+                        downloadButton.style.backgroundColor = '';
+                    }, 5000);
                     }
                     
                 } catch (error) {
