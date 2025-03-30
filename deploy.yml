@@ -1,0 +1,15 @@
+name: Deploy to WeChat Cloud
+on: [push]
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Deploy via CLI
+        env:
+          WX_CLOUD_ENV: ${{ secrets.WX_CLOUD_ENV }}
+          WX_CLOUD_APPID: ${{ secrets.WX_APPID }}
+        run: |
+          npm install -g @cloudbase/cli
+          cloudbase login --apiKeyId ${{ secrets.API_KEY_ID }} --apiKey ${{ secrets.API_KEY }}
+          cloudbase framework deploy
