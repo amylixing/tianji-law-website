@@ -159,6 +159,20 @@
         padding: var(--spacing-xs) 0;
     }
 
+    /* 添加导航条背景蒙版 */
+    .nav-container::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(255, 255, 255, 0.8); /* 白色半透明蒙版 */
+        backdrop-filter: blur(10px); /* 增加模糊效果 */
+        border-radius: var(--radius-lg);
+        z-index: -1;
+    }
+
     .main-nav {
         display: flex;
         justify-content: center;
@@ -171,13 +185,14 @@
 
     .nav-item {
         margin: 0 var(--spacing-lg);
-        font-weight: 600; /* 增加字体粗细 */
+        font-weight: 600;
         color: var(--text-primary);
         position: relative;
         text-decoration: none;
         padding: var(--spacing-sm) 0;
-        font-size: 1.05rem; /* 稍微增大导航字体 */
+        font-size: 1.05rem;
         display: inline-block;
+        z-index: 1; /* 确保导航项在蒙版之上 */
     }
 
     .nav-item:after {
@@ -208,10 +223,9 @@
     }
 
     @media (max-width: 768px) {
-        .main-nav {
-            flex-direction: row;
-            justify-content: center;
-            padding: var(--spacing-sm) 0;
+        .nav-container {
+            margin-top: -45px; /* 移动端调整上移距离 */
+            padding: var(--spacing-xs) var(--spacing-sm);
         }
         
         .nav-item {
