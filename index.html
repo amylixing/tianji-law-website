@@ -17,6 +17,11 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <!-- PWA 相关 -->
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#2c5dd7">
+    <meta name="apple-mobile-web-app-title" content="天玑法务">
+    <link rel="apple-touch-icon" href="/assets/images/icon-192.png">
     <title>天玑法务 - 为百姓说法</title>
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
@@ -1299,6 +1304,19 @@
     </div>
 
     <script>
+        // 注册 Service Worker
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js')
+                    .then(registration => {
+                        console.log('ServiceWorker registration successful');
+                    })
+                    .catch(err => {
+                        console.log('ServiceWorker registration failed: ', err);
+                    });
+            });
+        }
+        
         document.addEventListener('DOMContentLoaded', function() {
             // 平滑滚动到对应部分
             document.querySelectorAll('.nav-item').forEach(anchor => {
